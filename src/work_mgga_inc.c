@@ -193,7 +193,7 @@ WORK_MGGA_GPU(ORDER_TXT, SPIN_TXT)
     double s_ave;
 
     my_rho[1]   = m_max(p->dens_threshold, VAR(rho, ip, 1));
-    my_sigma[2] = m_max(p->sigma_threshold * p->sigma_threshold, sigma[2]);
+    my_sigma[2] = m_max(p->sigma_threshold * p->sigma_threshold, VAR(sigma, ip, 2));
     if(p->info->flags & XC_FLAGS_NEEDS_TAU){
       my_tau[1] = m_max(p->tau_threshold, VAR(tau, ip, 1));
 #ifdef XC_ENFORCE_FERMI_HOLE_CURVATURE
