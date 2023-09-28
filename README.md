@@ -114,12 +114,9 @@ Libxc will fail (most likely you will get a segmentation fault) if a CPU array i
 
 ### Python Library
 
-Optional Python bindings are available through the cytpes module. To install
-into Python site-packages plese run:
-`python setup.py install`
-
-or, to install locally for development:
-`python setup.py develop`
+Optional Python bindings are available through the NumPy ctypes module. To install
+into Python site-packages please run:
+`pip3 install -e .`
 
 The Python bindings require the CMake compilation pathway and the Python
 Numerical Python library. A short usage example is provided below:
