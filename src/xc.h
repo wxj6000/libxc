@@ -14,16 +14,16 @@ extern "C" {
 #endif
 
 /* Get the literature reference for libxc */
-const char *xc_reference();
+const char *xc_reference(void);
 /* Get the doi for the literature reference for libxc */
-const char *xc_reference_doi();
+const char *xc_reference_doi(void);
 /* Get the key for the literature reference for libxc */
-const char *xc_reference_key();
+const char *xc_reference_key(void);
 
 /* Get the major, minor, and micro version of libxc */
 void xc_version(int *major, int *minor, int *micro);
 /* Get the version of libxc as a string */
-const char *xc_version_string();
+const char *xc_version_string(void);
 
 #include <xc_version.h>
 #include <stddef.h>
@@ -374,9 +374,9 @@ char *xc_functional_get_name(int number);
 int   xc_family_from_id(int id, int *family, int *number);
 
 /** The number of functionals implemented in this version of libxc */
-int   xc_number_of_functionals();
+int   xc_number_of_functionals(void);
 /** The maximum name length of any functional */
-int   xc_maximum_name_length();
+int   xc_maximum_name_length(void);
 /** Returns the available functional number sorted by id */
 void  xc_available_functional_numbers(int *list);
 /** Returns the available functional number sorted by the functionals'
@@ -387,7 +387,7 @@ void  xc_available_functional_numbers_by_name(int *list);
 void  xc_available_functional_names(char **list);
 
 /** Dynamically allocates a libxc functional; which will also need to be initialized. */
-xc_func_type *xc_func_alloc();
+xc_func_type *xc_func_alloc(void);
 /** Initializes a functional by id with nspin spin channels */
 int   xc_func_init(xc_func_type *p, int functional, int nspin);
 /** Destructor for an initialized functional */
