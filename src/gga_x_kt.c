@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_GGA_X_KT1          145 /* Exchange part of Keal and Tozer version 1 */
 #define XC_GGA_XC_KT1         167 /* Keal and Tozer version 1                  */

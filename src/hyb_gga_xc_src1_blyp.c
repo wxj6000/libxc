@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_GGA_XC_SRC1_BLYP       714 /* Hybrid with two range separations (form 1) */
 #define XC_HYB_GGA_XC_SRC2_BLYP       715 /* Hybrid with two range separations (form 2) */

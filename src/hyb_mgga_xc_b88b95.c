@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_MGGA_XC_B88B95   440  /* Mixture of B88 with BC95 (B1B95)                             */
 #define XC_HYB_MGGA_XC_B86B95   441  /* Mixture of B86 with BC95                                     */

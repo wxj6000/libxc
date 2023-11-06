@@ -149,6 +149,7 @@ fh.close()
 
 # create C and F90 files with list of functionals
 fh1 =  open(params.builddir + "/xc_funcs.h", "w")
+fh1.write('#include "xc_funcs_removed.h"\n')
 fh2 =  open(params.builddir + "/xc_funcs_worker.h", "w")
 fh3 =  open(params.builddir + "/libxc_inc.f90", "w")
 for info in sorted(all_infos.values(), key=lambda item: item["number"]):

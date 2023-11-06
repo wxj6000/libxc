@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_GGA_XC_PBE0_DH   725 /* Double hybrid by Bremond and Adamo */
 #define XC_HYB_GGA_XC_PBE0_2    726 /* Double hybrid by Chai and Mao */

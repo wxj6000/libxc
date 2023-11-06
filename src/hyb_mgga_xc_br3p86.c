@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_MGGA_XC_BR3P86       389 /* BR3P86 hybrid meta-GGA from Neumann and Handy */
 

@@ -8,6 +8,7 @@
 
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_MGGA_C_B94           397 /* Meta-GGA correlation by Becke */
 #define XC_HYB_MGGA_XC_B94_HYB  398 /* Hybrid meta-GGA by Becke      */

@@ -417,9 +417,6 @@ double xc_func_get_ext_params_name(const xc_func_type *p, const char *name);
 /** Gets an external parameter by index */
 double xc_func_get_ext_params_value(const xc_func_type *p, int number);
 
-#include "xc_funcs.h"
-#include "xc_funcs_removed.h"
-
 /** New API */
 void xc_lda_new (const xc_func_type *p, int order, size_t np,
              const double *rho, xc_lda_out_params *out);

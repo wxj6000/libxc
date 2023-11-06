@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_MGGA_XC_HLE17      288  /* high local exchange 2017   */
 

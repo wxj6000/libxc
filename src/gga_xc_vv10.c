@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_GGA_XC_VV10         255 /* Vydrov and Van Voorhis */
 #define XC_HYB_GGA_XC_LC_VV10  469 /* Vydrov and Van Voorhis */

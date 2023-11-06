@@ -9,6 +9,7 @@
 
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_MGGA_X_VCML            651 /* VCML exchange, used in VCML-rVV10 by Trepte and Voss */
 #define XC_MGGA_XC_VCML_RVV10     652 /* VCML-rVV10 exchange-correlation by Trepte and Voss */
