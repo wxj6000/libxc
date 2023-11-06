@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 /* Local tau approximation */
 

@@ -8,6 +8,7 @@
 
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_MGGA_C_M06_L         233 /* Minnesota M06-L  correlation functional         */
 #define XC_MGGA_C_M06_HF        234 /* Minnesota M06-HF correlation functional         */

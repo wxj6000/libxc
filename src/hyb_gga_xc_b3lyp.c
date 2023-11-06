@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_GGA_XC_B3PW91        401 /* The original (ACM) hybrid of Becke    */
 #define XC_HYB_GGA_XC_B3LYP         402 /* The (in)famous B3LYP                  */

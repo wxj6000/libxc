@@ -8,6 +8,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_MGGA_X_PJS18       706 /* a screened version of TM */
 #define XC_HYB_MGGA_XC_LC_TMLYP  720 /* long-range corrected TM-LYP */

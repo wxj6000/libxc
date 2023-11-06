@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_GGA_XC_CAM_B3LYP        433 /* CAM version of B3LYP */
 #define XC_HYB_GGA_XC_CAMH_B3LYP       614 /* CAM version of B3LYP tuned for tddft */

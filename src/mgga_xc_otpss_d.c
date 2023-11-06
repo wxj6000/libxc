@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_MGGA_XC_OTPSS_D      64  /* oTPSS_D functional of Goerigk and Grimme   */
 

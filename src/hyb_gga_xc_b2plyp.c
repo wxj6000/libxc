@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_GGA_XC_B2PLYP     713 /* Double hybrid of Grimme */
 #define XC_HYB_GGA_XC_B2GPPLYP   721 /* Double hybrid of Karton et al */

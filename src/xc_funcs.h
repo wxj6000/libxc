@@ -1,3 +1,4 @@
+#include "xc_funcs_removed.h"
 #define  XC_LDA_X                            1 /* Slater exchange */
 #define  XC_LDA_C_WIGNER                     2 /* Wigner */
 #define  XC_LDA_C_RPA                        3 /* Random Phase Approximation (RPA) */

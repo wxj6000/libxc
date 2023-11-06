@@ -8,6 +8,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_GGA_XC_EDF1        165 /* Empirical functionals from Adamson, Gill, and Pople */
 #define XC_GGA_X_OPTPBE_VDW   141 /* PBE reparametrization for vdW */

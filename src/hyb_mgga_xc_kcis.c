@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_MGGA_XC_MPW1KCIS    566 /* Modified Perdew-Wang + KCIS hybrid */
 #define XC_HYB_MGGA_XC_MPWKCIS1K   567 /* Modified Perdew-Wang + KCIS hybrid with more exact exchange */

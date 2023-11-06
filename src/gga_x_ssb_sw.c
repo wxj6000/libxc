@@ -8,6 +8,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_GGA_X_SSB_SW       90  /* Swart, Sola and Bickelhaupt correction to PBE  */
 #define XC_GGA_X_SSB          91  /* Swart, Sola and Bickelhaupt  */

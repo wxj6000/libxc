@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_MGGA_X_EDMGGA          686 /* Tao 2001 */
 #define XC_HYB_MGGA_XC_EDMGGAH    695 /* Tao 2001 hybrid */

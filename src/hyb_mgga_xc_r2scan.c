@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_MGGA_XC_R2SCANH       659 /* r2SCAN hybrid like TPSSh with 10% exact exchange */
 #define XC_HYB_MGGA_XC_R2SCAN0       660 /* r2SCAN hybrid like PBE0 with 25% exact exchange */

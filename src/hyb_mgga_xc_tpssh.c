@@ -7,6 +7,7 @@
 */
 
 #include "util.h"
+#include "xc_funcs.h"
 
 #define XC_HYB_MGGA_XC_TPSSH       457 /*    TPSS hybrid */
 #define XC_HYB_MGGA_XC_REVTPSSH    458 /* revTPSS hybrid */
