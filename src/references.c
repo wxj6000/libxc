@@ -349,6 +349,13 @@ func_reference_type xc_ref_Bremond2016_244102 = {
   "Bremond2016_244102"
 };
 
+func_reference_type xc_ref_Brorsen2017_3488 = {
+  "K. R. Brorsen, Y. Yang, and S. Hammes-Schiffer.,  J. Phys. Chem. Lett. 8, 3488-3493 (2017)",
+  "10.1021/acs.jpclett.7b01442",
+  "@article{Brorsen2017_3488,\n  author = {Brorsen, Kurt R. and Yang, Yang and Hammes-Schiffer, Sharon},\n  title = {Multicomponent Density Functional Theory: Impact of Nuclear Quantum Effects on Proton Affinities and Geometries},\n  journal = {J. Phys. Chem. Lett.},\n  volume = {8},\n  number = {15},\n  pages = {3488-3493},\n  year = {2017},\n  doi = {10.1021/acs.jpclett.7b01442},\n  URL = {https://doi.org/10.1021/acs.jpclett.7b01442}\n}\n",
+  "Brorsen2017_3488"
+};
+
 func_reference_type xc_ref_Brown2021_2004 = {
   "K. Brown, Y. Maimaiti, K. Trepte, T. Bligaard, and J. Voss.,  J. Comput. Chem. 42, 2004–2013 (2021)",
   "10.1002/jcc.26732",
@@ -2869,6 +2876,13 @@ func_reference_type xc_ref_Yanai2004_51 = {
   "Yanai2004_51"
 };
 
+func_reference_type xc_ref_Yang2017_114113 = {
+  "Y. Yang, K. R. Brorsen, T. Culpitt, M. V. Pak, and S. Hammes-Schiffer.,  J. Chem. Phys. 147, 114113 (2017)",
+  "10.1063/1.4996038",
+  "@article{Yang2017_114113,\n  author = {Yang, Yang and Brorsen, Kurt R. and Culpitt, Tanner and Pak, Michael V. and Hammes-Schiffer, Sharon},\n  title = {{Development of a practical multicomponent density functional for electron-proton correlation to produce accurate proton densities}},\n  journal = {J. Chem. Phys.},\n  volume = {147},\n  number = {11},\n  pages = {114113},\n  year = {2017},\n  month = {09},\n  doi = {10.1063/1.4996038},\n  url = {https://doi.org/10.1063/1.4996038}\n}\n",
+  "Yang2017_114113"
+};
+
 func_reference_type xc_ref_Yonei1965_1051 = {
   "K. Yonei and Y. Tomishima.,  J. Phys. Soc. Jpn. 20, 1051 (1965)",
   "10.1143/JPSJ.20.1051",
@@ -3014,6 +3028,13 @@ func_reference_type xc_ref_delCampo2012_104108 = {
   "10.1063/1.3691197",
   "@article{delCampo2012_104108,\n  author = {del Campo, J. M. and G\\'{a}zquez, J. L. and Trickey, S. B. and Vela, A.},\n  title = {Non-empirical improvement of {PBE} and its hybrid {PBE0} for general description of molecular properties},\n  journal = {J. Chem. Phys.},\n  year = {2012},\n  volume = {136},\n  number = {10},\n  pages = {104108},\n  doi = {10.1063/1.3691197},\n  url = {http://scitation.aip.org/content/aip/journal/jcp/136/10/10.1063/1.3691197}\n}\n",
   "delCampo2012_104108"
+};
+
+func_reference_type xc_ref_epcnote = {
+  "This is an electron-proton correlation functional, implemented in Libxc using a trick: feeding in the total electronic density as 'spin-up' and the protonic density as 'spin-down', all the necessary derivatives required for implementing the nuclear-electronic orbital method are generated and are accessible using the standard techniques. This functional should not be used for electrons, only.",
+  "",
+  "@misc{epcnote,\n  note = {This is an electron-proton correlation functional, implemented in Libxc using a trick: feeding in the total electronic density as 'spin-up' and the protonic density as 'spin-down', all the necessary derivatives required for implementing the nuclear-electronic orbital method are generated and are accessible using the standard techniques. This functional should not be used for electrons, only.}\n}\n",
+  "epcnote"
 };
 
 func_reference_type xc_ref_gaussianimplementation = {
