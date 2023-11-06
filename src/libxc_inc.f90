@@ -973,6 +973,12 @@
  ! Becke 97-3c by Grimme et. al.
  integer(c_int), parameter, public :: XC_GGA_XC_B97_3C  =    327
 
+ ! epc17(-1): electron-proton correlation 2017
+ integer(c_int), parameter, public :: XC_LDA_C_EPC17  =    328
+
+ ! epc17-2: electron-proton correlation 2017 for proton affinities
+ integer(c_int), parameter, public :: XC_LDA_C_EPC17_2  =    329
+
  ! Self-interaction corrected correlation functional by Schmidt et al
  integer(c_int), parameter, public :: XC_MGGA_C_CC  =    387
 

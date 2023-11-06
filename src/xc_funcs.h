@@ -323,6 +323,8 @@
 #define  XC_GGA_X_NCAPR                    324 /* Nearly correct asymptotic potential revised */
 #define  XC_HYB_GGA_XC_RELPBE0             325 /* relPBE0 a.k.a. relPBE: PBE0 refitted for actinide compounds */
 #define  XC_GGA_XC_B97_3C                  327 /* Becke 97-3c by Grimme et. al. */
+#define  XC_LDA_C_EPC17                    328 /* epc17(-1): electron-proton correlation 2017 */
+#define  XC_LDA_C_EPC17_2                  329 /* epc17-2: electron-proton correlation 2017 for proton affinities */
 #define  XC_MGGA_C_CC                      387 /* Self-interaction corrected correlation functional by Schmidt et al */
 #define  XC_MGGA_C_CCALDA                  388 /* Iso-orbital corrected LDA correlation by Lebeda et al */
 #define  XC_HYB_MGGA_XC_BR3P86             389 /* BR3P86 hybrid meta-GGA from Neumann and Handy */

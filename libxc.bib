@@ -612,6 +612,18 @@
   url = {https://doi.org/10.1063/1.4972815}
 }
 
+@article{Brorsen2017_3488,
+  author = {Brorsen, Kurt R. and Yang, Yang and Hammes-Schiffer, Sharon},
+  title = {Multicomponent Density Functional Theory: Impact of Nuclear Quantum Effects on Proton Affinities and Geometries},
+  journal = {J. Phys. Chem. Lett.},
+  volume = {8},
+  number = {15},
+  pages = {3488-3493},
+  year = {2017},
+  doi = {10.1021/acs.jpclett.7b01442},
+  URL = {https://doi.org/10.1021/acs.jpclett.7b01442},
+}
+
 @article{Brown2021_2004,
   author = {Brown, Kristopher and Maimaiti, Yasheng and Trepte, Kai and Bligaard, Thomas and Voss, Johannes},
   title = {{MCML}: Combining physical constraints with experimental data for a multi-purpose meta-generalized gradient approximation},
@@ -5224,6 +5236,19 @@
   url = "http://www.sciencedirect.com/science/article/pii/S0009261404008620"
 }
 
+@article{Yang2017_114113,
+  author = {Yang, Yang and Brorsen, Kurt R. and Culpitt, Tanner and Pak, Michael V. and Hammes-Schiffer, Sharon},
+  title = "{Development of a practical multicomponent density functional for electron-proton correlation to produce accurate proton densities}",
+  journal = {J. Chem. Phys.},
+  volume = {147},
+  number = {11},
+  pages = {114113},
+  year = {2017},
+  month = {09},
+  doi = {10.1063/1.4996038},
+  url = {https://doi.org/10.1063/1.4996038},
+}
+
 @article{Yonei1965_1051,
   title = {On the {Weizs\"{a}cker} Correction to the {Thomas}--{Fermi} Theory of the Atom},
   author = {K. Yonei and Y. Tomishima},
@@ -5483,6 +5508,10 @@
   pages = 104108,
   doi = "10.1063/1.3691197",
   url = "http://scitation.aip.org/content/aip/journal/jcp/136/10/10.1063/1.3691197"
+}
+
+@misc{epcnote,
+  note = {This is an electron-proton correlation functional, implemented in Libxc using a trick: feeding in the total electronic density as 'spin-up' and the protonic density as 'spin-down', all the necessary derivatives required for implementing the nuclear-electronic orbital method are generated and are accessible using the standard techniques. This functional should not be used for electrons, only.}
 }
 
 @misc{gaussianimplementation,
