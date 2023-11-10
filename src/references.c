@@ -356,6 +356,13 @@ func_reference_type xc_ref_Brorsen2017_3488 = {
   "Brorsen2017_3488"
 };
 
+func_reference_type xc_ref_Brorsen2018_044110 = {
+  "K. R. Brorsen, P. E. Schneider, and S. Hammes-Schiffer.,  J. Chem. Phys. 149, 044110 (2018)",
+  "10.1063/1.5037945",
+  "@article{Brorsen2018_044110,\n  author = {Brorsen, Kurt R. and Schneider, Patrick E. and Hammes-Schiffer, Sharon},\n  title = {{Alternative forms and transferability of electron-proton correlation functionals in nuclear-electronic orbital density functional theory}},\n  journal = {J. Chem. Phys.},\n  volume = {149},\n  number = {4},\n  pages = {044110},\n  year = {2018},\n  month = {07},\n  issn = {0021-9606},\n  doi = {10.1063/1.5037945},\n  url = {https://doi.org/10.1063/1.5037945}\n}\n",
+  "Brorsen2018_044110"
+};
+
 func_reference_type xc_ref_Brown2021_2004 = {
   "K. Brown, Y. Maimaiti, K. Trepte, T. Bligaard, and J. Voss.,  J. Comput. Chem. 42, 2004–2013 (2021)",
   "10.1002/jcc.26732",
