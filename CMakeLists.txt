@@ -353,6 +353,7 @@ set(raw_sources_list
   lda_x_sloc.c
   lda_x_yukawa.c
   lda_c_epc17.c
+  lda_c_epc18.c
   mgga.c
   mgga_c_b88.c
   mgga_c_b94.c
