@@ -619,7 +619,7 @@ end interface
     subroutine xc_aux_func_weights(p, weights) bind(c, name="xc_aux_func_weights")
       import
       type(c_ptr), value :: p
-      real(c_double), intent(in) :: weights(*)
+      real(c_double), intent(out) :: weights(*)
     end subroutine xc_aux_func_weights
   end interface
 
