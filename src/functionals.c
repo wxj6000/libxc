@@ -110,7 +110,7 @@ int xc_family_from_id(int id, int *family, int *number)
 }
 
 /*------------------------------------------------------*/
-int xc_number_of_functionals()
+int xc_number_of_functionals(void)
 {
   int num;
 
@@ -123,7 +123,7 @@ int xc_number_of_functionals()
   exit(1);
 }
 
-int xc_maximum_name_length()
+int xc_maximum_name_length(void)
 {
   int i, N, maxlen, tmp;
 
@@ -221,7 +221,7 @@ void xc_available_functional_names(char **list)
 }
 
 /*------------------------------------------------------*/
-xc_func_type *xc_func_alloc()
+xc_func_type *xc_func_alloc(void)
 {
   xc_func_type *func;
 
