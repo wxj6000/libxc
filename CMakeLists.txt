@@ -452,6 +452,7 @@ set(raw_sources_list
   hyb_mgga_xc_br3p86.c
   mgga_x_vcml.c
   hyb_mgga_xc_r2scan.c
+  mgga_x_eel.c
   mix_func.c
   deorbitalize_func.c
   references.c

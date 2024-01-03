@@ -97,6 +97,13 @@ func_reference_type xc_ref_Aschebrock2019_033082 = {
   "Aschebrock2019_033082"
 };
 
+func_reference_type xc_ref_Aschebrock2023_234107 = {
+  "T. Aschebrock, T. Lebeda, M. Brütting, R. Richter, I. Schelter, and S. Kümmel.,  J. Chem. Phys. 159, 234107 (2023)",
+  "10.1063/5.0173776",
+  "@article{Aschebrock2023_234107,\n  author = {Aschebrock, Thilo and Lebeda, Timo and Br\\\"{u}tting, Moritz and Richter, Rian and Schelter, Ingo and K\\\"{u}mmel, Stephan},\n  title = {{Exact exchange-like electric response from a meta-generalized gradient approximation: A semilocal realization of ultranonlocality}},\n  journal = {J. Chem. Phys.},\n  volume = {159},\n  number = {23},\n  pages = {234107},\n  year = {2023},\n  month = {12},\n  issn = {0021-9606},\n  doi = {10.1063/5.0173776},\n  url = {https://doi.org/10.1063/5.0173776}\n}\n",
+  "Aschebrock2023_234107"
+};
+
 func_reference_type xc_ref_Attaccalite2002_256601 = {
   "C. Attaccalite, S. Moroni, P. Gori-Giorgi, and G. B. Bachelet.,  Phys. Rev. Lett. 88, 256601 (2002)",
   "10.1103/PhysRevLett.88.256601",
