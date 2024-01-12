@@ -325,6 +325,7 @@ xc_functional_key_t xc_functional_keys[] = {
   {"mgga_c_tpss_gaussian", 323},
   {"gga_x_ncapr", 324},
   {"hyb_gga_xc_relpbe0", 325},
+  {"mgga_x_eel", 326},
   {"gga_xc_b97_3c", 327},
   {"lda_c_epc17", 328},
   {"lda_c_epc17_2", 329},
