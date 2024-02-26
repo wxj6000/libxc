@@ -24,14 +24,17 @@ def read_infos(srcdir, family, all_ids):
   import glob
 
   # find all files that belong to this family, for example should
-  # returns all files of the type gga_*.c and hyb_gga_*.c for GGAs
+  # returns all files of the type gga_*.c for GGAs
   glob_files  = glob.glob(srcdir + "/" + family + "_*.c")
-  glob_files += glob.glob(srcdir + "/hyb_" + family + "_*.c")
+  if family.find('hyb_') != -1:
+     glob_files += glob.glob(srcdir + "/" + family.replace('hyb_','') + "_*.c")
+  else:
+     glob_files += glob.glob(srcdir + "/hyb_" + family + "_*.c")
 
   # pattern that matches "#define FUNC number /* comment */"
-  pattern_def = re.compile(r'#define\s+XC_(((?:HYB_)?' + family.upper() + r")_\S+)\s+(\S+)\s+\/\*\s*(.*?)\s*\*\/")
+  pattern_def = re.compile(r'#define\s+XC_((' + family.upper() + r")_\S+)\s+(\S+)\s+\/\*\s*(.*?)\s*\*\/")
   # pattern that matches "xc_func_info_type xc_func_info_"
-  pattern_inf = re.compile(r'^(const |)xc_func_info_type xc_func_info_((?:hyb_)?' + family.lower() + r"\S+)")
+  pattern_inf = re.compile(r'^(const |)xc_func_info_type xc_func_info_(' + family.lower() + r"\S+)")
 
   numbers  = {}
   infos    = {}
@@ -104,7 +107,8 @@ def read_infos(srcdir, family, all_ids):
 
   return infos
 
-families = ("lda", "gga", "mgga")
+# hybrids are not added automatically
+families = ("lda", "hyb_lda", "gga", "hyb_gga", "mgga", "hyb_mgga")
 family_infos = {}
 all_ids   = {}
 all_infos = {}
@@ -127,13 +131,19 @@ for ifun, info in enumerate(info_list):
       sys.exit()
 
 for family in families:
-  infos = family_infos[family]
+  full_infos = family_infos[family]
+  prefix = ""
+
+  infos = {}
+  for func in full_infos:
+    infos[func] = full_infos[func]
+
   # create funcs_family.c file
-  fh =  open(params.builddir + "/funcs_" + family + ".c", "w")
+  fh =  open(params.builddir + "/funcs_" + prefix + family + ".c", "w")
   fh.write('#include "util.h"\n\n')
   for info in sorted(infos.values(), key=lambda item: item["number"]):
     fh.write('extern xc_func_info_type xc_func_info_' + info["codename"] + ';\n')
-  fh.write('\nconst xc_func_info_type *xc_' + family + '_known_funct[] = {\n')
+  fh.write('\nconst xc_func_info_type *xc_' + prefix + family + '_known_funct[] = {\n')
   for info in sorted(infos.values(), key=lambda item: item["number"]):
     fh.write('  &xc_func_info_' + info["codename"] + ',\n')
   fh.write('  NULL\n};\n')
@@ -149,7 +159,6 @@ fh.close()
 
 # create C and F90 files with list of functionals
 fh1 =  open(params.builddir + "/xc_funcs.h", "w")
-fh1.write('#include "xc_funcs_removed.h"\n')
 fh2 =  open(params.builddir + "/xc_funcs_worker.h", "w")
 fh3 =  open(params.builddir + "/libxc_inc.f90", "w")
 for info in sorted(all_infos.values(), key=lambda item: item["number"]):

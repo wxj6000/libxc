@@ -144,7 +144,7 @@ noinst_HEADERS = \
 	work_lda.c work_lda_inc.c work_gga.c work_gga_inc.c	\
 	work_mgga.c work_mgga_inc.c \
 	libxc_master.F90 \
-        funcs_lda.c funcs_gga.c funcs_mgga.c funcs_key.c \
+        funcs_lda.c funcs_hyb_lda.c funcs_gga.c funcs_hyb_gga.c funcs_mgga.c funcs_hyb_mgga.c funcs_key.c \
 	libxc_inc.f90
 include_HEADERS = xc.h xc_funcs.h xc_funcs_removed.h xc_funcs_worker.h
 

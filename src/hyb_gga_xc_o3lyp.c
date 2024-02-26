@@ -44,7 +44,7 @@ o3lyp_set_ext_params(xc_func_type *p, const double *ext_params)
   p->mix_coef[2] = 1.0 - clyp;
   p->mix_coef[3] = clyp;
 
-  p->hyb_coeff[0] = a;
+  p->cam_alpha = a;
 }
 
 static void
@@ -63,7 +63,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_o3lyp = {
   XC_HYB_GGA_XC_O3LYP,
   XC_EXCHANGE_CORRELATION,
   "O3LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Hoe2001_319, &xc_ref_Cohen2001_607, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -103,7 +103,7 @@ x3lyp_set_ext_params(xc_func_type *p, const double *ext_params)
   p->mix_coef[3] = 1.0 - ac;
   p->mix_coef[4] = ac;
 
-  p->hyb_coeff[0] = a0;
+  p->cam_alpha = a0;
 }
 
 static void
@@ -123,7 +123,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_x3lyp = {
   XC_HYB_GGA_XC_X3LYP,
   XC_EXCHANGE_CORRELATION,
   "X3LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Xu2004_2673, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,

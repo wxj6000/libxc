@@ -55,14 +55,9 @@ set_ext_params(xc_func_type *p, const double *ext_params)
   xc_func_set_ext_params_name(p->func_aux[1], "_omega", omega);
 
   /* Set hybrid terms */
-  assert(p->hyb_number_terms == 2);
-  p->hyb_type[0]  = XC_HYB_ERF_SR;
-  p->hyb_coeff[0] = csr-clr;
-  p->hyb_omega[0] = omega;
-
-  p->hyb_type[1]  = XC_HYB_FOCK;
-  p->hyb_coeff[1] = clr;
-  p->hyb_omega[1] = 0.0;
+  p->cam_beta = csr-clr;
+  p->cam_omega = omega;
+  p->cam_alpha = clr;
 }
 
 static void
@@ -81,11 +76,12 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_cam_o3lyp = {
   XC_HYB_GGA_XC_CAM_O3LYP,
   XC_EXCHANGE_CORRELATION,
   "CAM-O3LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Bircher2018_3184, NULL, NULL, NULL, NULL},
-  XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
+  XC_FLAGS_3D | XC_FLAGS_HYB_CAM | XC_FLAGS_I_HAVE_ALL,
   1e-15,
   {N_PAR, names, desc, par_cam_o3lyp, set_ext_params},
   hyb_gga_xc_cam_o3lyp_init,
   NULL, NULL, NULL, NULL
 };
+

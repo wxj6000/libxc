@@ -23,8 +23,7 @@ typedef struct{
 static void
 xc_gga_c_pbe_erf_gws_init(xc_func_type *p)
 {
-  xc_hyb_init_sr(p, 0.0,0.0);
-  p->hyb_type[0] = XC_HYB_NONE;
+  xc_hyb_init_hybrid(p, 0.0);
   assert(p!=NULL && p->params == NULL);
   p->params = libxc_malloc(sizeof(gga_c_pbe_erf_gws_params));
 }

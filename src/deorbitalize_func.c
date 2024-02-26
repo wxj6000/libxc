@@ -11,9 +11,9 @@
 
 #include "util.h"
 
-#define is_mgga(id)   ((id) == XC_FAMILY_MGGA)
-#define is_gga(id)    ((id) == XC_FAMILY_GGA || is_mgga(id))
-#define is_lda(id)    ((id) == XC_FAMILY_LDA ||  is_gga(id))
+#define is_mgga(id)   ((id) == XC_FAMILY_MGGA || (id) == XC_FAMILY_HYB_MGGA)
+#define is_gga(id)    ((id) == XC_FAMILY_GGA || (id) == XC_FAMILY_HYB_GGA || is_mgga(id))
+#define is_lda(id)    ((id) == XC_FAMILY_LDA || (id) == XC_FAMILY_HYB_LDA ||  is_gga(id))
 #define safe_free(pt) if(pt != NULL) libxc_free(pt)
 
 /* Due to the fact that some functionals do not depend on tau or lapl,
@@ -261,14 +261,17 @@ xc_mgga_evaluate_functional(const xc_func_type *func, size_t np,
   /* Evaluate the functional */
   switch(func->info->family){
   case XC_FAMILY_LDA:
+  case XC_FAMILY_HYB_LDA:
     xc_lda(func, np, rho,
            mzk LDA_OUT_PARAMS_NO_EXC(XC_COMMA, ));
     break;
   case XC_FAMILY_GGA:
+  case XC_FAMILY_HYB_GGA:
     xc_gga(func, np, rho, sigma,
            mzk GGA_OUT_PARAMS_NO_EXC(XC_COMMA, ));
     break;
   case XC_FAMILY_MGGA:
+  case XC_FAMILY_HYB_MGGA:
     xc_mgga(func, np, rho, sigma, lapl, tau,
             mzk MGGA_OUT_PARAMS_NO_EXC(XC_COMMA, ));
     break;

@@ -1,4 +1,3 @@
-#include "xc_funcs_removed.h"
 #define  XC_LDA_X                            1 /* Slater exchange */
 #define  XC_LDA_C_WIGNER                     2 /* Wigner */
 #define  XC_LDA_C_RPA                        3 /* Random Phase Approximation (RPA) */
@@ -631,27 +630,13 @@
 #define  XC_HYB_MGGA_X_JS18                705 /* Jana and Samal 2018, screened range-separated TM exchange */
 #define  XC_HYB_MGGA_X_PJS18               706 /* Patra, Jana and Samal 2018, screened range-separated TM exchange */
 #define  XC_MGGA_X_TASK                    707 /* TASK exchange of Aschebrock and Kuemmel */
-#define  XC_HYB_GGA_X_LCGAU                708 /* Long-range Gaussian */
-#define  XC_HYB_GGA_X_LCGAU_CORE           709 /* Long-range Gaussian fitted to core excitations */
-#define  XC_HYB_GGA_X_LC2GAU               710 /* Long-range Gaussian 2 */
 #define  XC_MGGA_X_MGGAC                   711 /* MGGAC exchange of Patra et al */
 #define  XC_GGA_C_MGGAC                    712 /* beta fitted to LC20 to be used with MGGAC */
-#define  XC_HYB_GGA_XC_B2PLYP              713 /* Double hybrid of Grimme */
-#define  XC_HYB_GGA_XC_SRC1_BLYP           714 /* Hybrid with two range separations (form 1) */
-#define  XC_HYB_GGA_XC_SRC2_BLYP           715 /* Hybrid with two range separations (form 2) */
 #define  XC_MGGA_X_MBR                     716 /* modified Becke-Roussel by Patra et al */
-#define  XC_HYB_GGA_XC_HISS                717 /* Middle-range hybrid from Henderson, Izmaylov, Scuseria, and Savin */
 #define  XC_MGGA_X_R2SCANL                 718 /* Deorbitalized re-regularized SCAN (r2SCAN-L) exchange */
 #define  XC_MGGA_C_R2SCANL                 719 /* Deorbitalized re-regularized SCAN (r2SCAN-L) correlation */
 #define  XC_HYB_MGGA_XC_LC_TMLYP           720 /* Long-range corrected TM-LYP by Jana et al */
-#define  XC_HYB_GGA_XC_B2GPPLYP            721 /* Double hybrid of Karton et al */
-#define  XC_HYB_GGA_XC_WB2PLYP             722 /* Double hybrid of Casanova-Paez, Dardis and Goerigk */
-#define  XC_HYB_GGA_XC_WB2GPPLYP           723 /* Double hybrid of Casanova-Paez, Dardis and Goerigk */
 #define  XC_MGGA_X_MTASK                   724 /* modified TASK exchange */
-#define  XC_HYB_GGA_XC_PBE0_DH             725 /* Double hybrid of Bremond and Adamo */
-#define  XC_HYB_GGA_XC_PBE0_2              726 /* Double hybrid of Chai and Mao */
-#define  XC_HYB_GGA_XC_PBE_QIDH            727 /* Double hybrid of Bremond et al */
-#define  XC_HYB_GGA_XC_LS1DH_PBE           728 /* Double hybrid of Toulouse et al */
 #define  XC_GGA_X_Q1D                      734 /* Functional for quasi-1D systems */
 #define  XC_MGGA_X_KTBM_0                  735 /* KTBM learned exchange - 0 */
 #define  XC_MGGA_X_KTBM_1                  736 /* KTBM learned exchange - 1 */

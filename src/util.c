@@ -61,11 +61,20 @@ const char *get_family(const xc_func_type *func) {
     case(XC_FAMILY_LDA):
       return "XC_FAMILY_LDA";
 
+    case(XC_FAMILY_HYB_LDA):
+      return "XC_FAMILY_HYB_LDA";
+
     case(XC_FAMILY_GGA):
       return "XC_FAMILY_GGA";
 
+    case(XC_FAMILY_HYB_GGA):
+      return "XC_FAMILY_HYB_GGA";
+
     case(XC_FAMILY_MGGA):
       return "XC_FAMILY_MGGA";
+
+    case(XC_FAMILY_HYB_MGGA):
+      return "XC_FAMILY_HYB_MGGA";
 
     case(XC_FAMILY_LCA):
       return "XC_FAMILY_LCA";
@@ -126,11 +135,7 @@ set_ext_params_omega(xc_func_type *p, const double *ext_params)
   assert(p != NULL);
   nparams = p->info->ext_params.n - 1;
 
-  /* This omega is only meant for internal use */
-  assert(p->hyb_number_terms == 1);
-  p->hyb_type[0]  = XC_HYB_NONE;
-  p->hyb_coeff[0] = 0.0;
-  p->hyb_omega[0] = get_ext_param(p, ext_params, nparams);
+  p->cam_omega = get_ext_param(p, ext_params, nparams);
 }
 
 void
@@ -154,10 +159,7 @@ set_ext_params_exx(xc_func_type *p, const double *ext_params)
   assert(p != NULL);
   nparams = p->info->ext_params.n - 1;
 
-  assert(p->hyb_number_terms == 1);
-  p->hyb_type[0]  = XC_HYB_FOCK;
-  p->hyb_coeff[0] = get_ext_param(p, ext_params, nparams);
-  p->hyb_omega[0] = 0.0;
+  p->cam_alpha = get_ext_param(p, ext_params, nparams);
 }
 
 void
@@ -181,14 +183,9 @@ set_ext_params_cam(xc_func_type *p, const double *ext_params)
   assert(p != NULL);
   nparams = p->info->ext_params.n - 3;
 
-  assert(p->hyb_number_terms == 2);
-  p->hyb_type[0]  = XC_HYB_ERF_SR;
-  p->hyb_coeff[0] = get_ext_param(p, ext_params, nparams + 1);
-  p->hyb_omega[0] = get_ext_param(p, ext_params, nparams + 2);
-
-  p->hyb_type[1]  = XC_HYB_FOCK;
-  p->hyb_coeff[1] = get_ext_param(p, ext_params, nparams);
-  p->hyb_omega[1] = 0.0;
+  p->cam_alpha = get_ext_param(p, ext_params, nparams);
+  p->cam_beta = get_ext_param(p, ext_params, nparams + 1);
+  p->cam_omega = get_ext_param(p, ext_params, nparams + 2);
 }
 
 void
@@ -205,14 +202,12 @@ void
 set_ext_params_camy(xc_func_type *p, const double *ext_params)
 {
   set_ext_params_cam(p, ext_params);
-  p->hyb_type[0]  = XC_HYB_YUKAWA_SR;
 }
 
 void
 set_ext_params_cpy_camy(xc_func_type *p, const double *ext_params)
 {
   set_ext_params_cpy_cam(p, ext_params);
-  p->hyb_type[0]  = XC_HYB_YUKAWA_SR;
 }
 
 /*
@@ -225,10 +220,8 @@ set_ext_params_cam_sr(xc_func_type *p, const double *ext_params)
   assert(p != NULL);
   nparams = p->info->ext_params.n - 2;
 
-  assert(p->hyb_number_terms == 1);
-  p->hyb_type[0]  = XC_HYB_ERF_SR;
-  p->hyb_coeff[0] = get_ext_param(p, ext_params, nparams);
-  p->hyb_omega[0] = get_ext_param(p, ext_params, nparams + 1);
+  p->cam_beta = get_ext_param(p, ext_params, nparams);
+  p->cam_omega = get_ext_param(p, ext_params, nparams + 1);
 }
 
 void
@@ -249,14 +242,9 @@ set_ext_params_lc(xc_func_type *p, const double *ext_params)
   assert(p != NULL);
   nparams = p->info->ext_params.n - 1;
 
-  assert(p->hyb_number_terms == 2);
-  p->hyb_type[0]  = XC_HYB_ERF_SR;
-  p->hyb_coeff[0] = -1.0;
-  p->hyb_omega[0] = get_ext_param(p, ext_params, nparams);
-
-  p->hyb_type[1]  = XC_HYB_FOCK;
-  p->hyb_coeff[1] = 1.0;
-  p->hyb_omega[1] = 0.0;
+  p->cam_alpha = 1.0;
+  p->cam_beta = -1.0;
+  p->cam_omega = get_ext_param(p, ext_params, nparams);
 }
 
 void
@@ -273,14 +261,12 @@ void
 set_ext_params_lcy(xc_func_type *p, const double *ext_params)
 {
   set_ext_params_lc(p, ext_params);
-  p->hyb_type[0]  = XC_HYB_YUKAWA_SR;
 }
 
 void
 set_ext_params_cpy_lcy(xc_func_type *p, const double *ext_params)
 {
   set_ext_params_cpy_lc(p, ext_params);
-  p->hyb_type[0]  = XC_HYB_YUKAWA_SR;
 }
 
 /* Free pointer */

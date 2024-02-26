@@ -41,7 +41,6 @@ gga_x_ityh_pbe_init(xc_func_type *p)
   params->lambda = 0.0;
 
   xc_hyb_init_hybrid(p, 0.0);
-  p->hyb_type[0] = XC_HYB_NONE;
 }
 
 #ifdef __cplusplus

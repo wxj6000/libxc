@@ -38,8 +38,8 @@ set_ext_params(xc_func_type *p, const double *ext_params)
 
   p->mix_coef[0] = 1-cx;
 
-  p->hyb_coeff[0] = cx;
-  p->hyb_omega[0] = 0.0;
+  p->cam_alpha = cx;
+  p->cam_omega = 0.0;
 }
 
 static const double par_b1wc[N_PAR] = {0.16};
@@ -66,7 +66,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b1wc = {
   XC_HYB_GGA_XC_B1WC,
   XC_EXCHANGE_CORRELATION,
   "B1WC",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Bilc2008_165107, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -93,7 +93,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b1lyp = {
   XC_HYB_GGA_XC_B1LYP,
   XC_EXCHANGE_CORRELATION,
   "B1LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Adamo1997_242, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -119,7 +119,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b1pw91 = {
   XC_HYB_GGA_XC_B1PW91,
   XC_EXCHANGE_CORRELATION,
   "B1PW91",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Adamo1997_242, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -162,7 +162,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_mpw1lyp = {
   XC_HYB_GGA_XC_MPW1LYP,
   XC_EXCHANGE_CORRELATION,
   "mPW1LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Adamo1998_664, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -178,7 +178,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_mpw1pbe = {
   XC_HYB_GGA_XC_MPW1PBE,
   XC_EXCHANGE_CORRELATION,
   "mPW1PBE",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Adamo1998_664, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -194,7 +194,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_mpw1pw = {
   XC_HYB_GGA_XC_MPW1PW,
   XC_EXCHANGE_CORRELATION,
   "mPW1PW",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Adamo1998_664, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -221,7 +221,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_mpw1k = {
   XC_HYB_GGA_XC_MPW1K,
   XC_EXCHANGE_CORRELATION,
   "mPW1K",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Lynch2000_4811, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -248,7 +248,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_bhandh = {
   XC_HYB_GGA_XC_BHANDH,
   XC_EXCHANGE_CORRELATION,
   "BHandH i.e. BHLYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Becke1993_1372, &xc_ref_gaussianimplementation, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -275,7 +275,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_bhandhlyp = {
   XC_HYB_GGA_XC_BHANDHLYP,
   XC_EXCHANGE_CORRELATION,
   "BHandHLYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Becke1993_1372, &xc_ref_gaussianimplementation, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -302,7 +302,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_blyp35 = {
   XC_HYB_GGA_XC_BLYP35,
   XC_EXCHANGE_CORRELATION,
   "BLYP35",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Renz2009_16292, &xc_ref_Kaupp2011_16973, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -329,7 +329,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_mpwlyp1m = {
   XC_HYB_GGA_XC_MPWLYP1M,
   XC_EXCHANGE_CORRELATION,
   "MPW with 1 par. for metals/LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Schultz2005_11127, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,

@@ -38,8 +38,7 @@ static void xc_gga_x_pbe_erf_gws_init(xc_func_type *p)
   assert(p!=NULL && p->params == NULL);
   p->params = libxc_malloc(sizeof(gga_x_pbe_erf_gws_params));
 
-  xc_hyb_init_sr(p, 0.0, 0.0);
-  p->hyb_type[0] = XC_HYB_NONE;
+  xc_hyb_init_hybrid(p, 0.0);
 }
 
 #include "maple2c/gga_exc/gga_x_pbe_erf_gws.c"
@@ -75,9 +74,9 @@ const xc_func_info_type xc_func_info_hyb_gga_x_pbe_erf_gws = {
   XC_HYB_GGA_X_PBE_ERF_GWS,
   XC_EXCHANGE,
   "Short-range PBE (GWS) exchange (erfc) + long-range exact exchange",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Goll2005_3917, &xc_ref_Goll2006_276, NULL, NULL, NULL},
-  XC_FLAGS_3D | MAPLE2C_FLAGS,
+  XC_FLAGS_3D | XC_FLAGS_HYB_CAM | MAPLE2C_FLAGS,
   1e-15,
   {N_PAR, param_names, param_desc, param_values, set_ext_params_cpy_lc},
   xc_hyb_gga_x_pbe_erf_gws_init,

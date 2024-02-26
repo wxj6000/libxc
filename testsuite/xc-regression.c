@@ -15,6 +15,9 @@
 #include <xc.h>
 #include <util.h>
 
+#define IS_GGA(family) (family & (XC_FAMILY_GGA | XC_FAMILY_HYB_GGA | XC_FAMILY_MGGA | XC_FAMILY_HYB_MGGA))
+#define IS_MGGA(family)(family & (XC_FAMILY_MGGA | XC_FAMILY_HYB_MGGA))
+
 /* Buffer size (line length) for file reads */
 #define BUFSIZE 1024
 
@@ -419,6 +422,7 @@ int main(int argc, char *argv[])
   /* Evaluate xc functional */
   switch(family) {
   case XC_FAMILY_LDA:
+  case XC_FAMILY_HYB_LDA:
     switch(order) {
     case(0):
       xc_lda_exc(&func, d.n, d.rho, zk);
@@ -436,6 +440,7 @@ int main(int argc, char *argv[])
     }
     break;
   case XC_FAMILY_GGA:
+  case XC_FAMILY_HYB_GGA:
     switch(order) {
     case(0):
       xc_gga_exc(&func, d.n, d.rho, d.sigma, zk);
@@ -454,6 +459,7 @@ int main(int argc, char *argv[])
     }
     break;
   case XC_FAMILY_MGGA:
+  case XC_FAMILY_HYB_MGGA:
     switch(order) {
     case(0):
       xc_mgga_exc(&func, d.n, d.rho, d.sigma, d.lapl, d.tau, zk);
@@ -497,17 +503,17 @@ int main(int argc, char *argv[])
     case (1): /* first order derivatives */
       if (nspin == XC_POLARIZED) {
         fprintf(out, sfmt2, "vrho(a)", "vrho(b)");
-        if (family & (XC_FAMILY_GGA | XC_FAMILY_MGGA))
+        if (IS_GGA(family))
           fprintf(out, sfmt3, "vsigma(aa)", "vsigma(ab)", "vsigma(bb)");
-        if (family & (XC_FAMILY_MGGA)) {
+        if (IS_MGGA(family)) {
           fprintf(out, sfmt2, "vlapl(a)", "vlapl(b)");
           fprintf(out, sfmt2, "vtau(a)", "vtau(b)");
         }
       } else {
         fprintf(out, sfmt, "vrho");
-        if (family & (XC_FAMILY_GGA | XC_FAMILY_MGGA))
+        if (IS_GGA(family))
           fprintf(out, sfmt, "vsigma");
-        if(family & (XC_FAMILY_MGGA)) {
+        if (IS_MGGA(family)) {
           fprintf(out, sfmt, "vlapl");
           fprintf(out, sfmt, "vtau");
         }
@@ -517,13 +523,13 @@ int main(int argc, char *argv[])
     case (2): /* second order derivatives */
       if (nspin == XC_POLARIZED) {
         fprintf(out,sfmt3,"v2rho(aa)","v2rho(ab)","v2rho(bb)");
-        if(family & (XC_FAMILY_GGA | XC_FAMILY_MGGA)) {
+        if(IS_GGA(family)) {
           fprintf(out, sfmt3, "v2sigma2(aa-aa)", "v2sigma2(aa-ab)", "v2sigma2(aa-bb)");
           fprintf(out, sfmt3, "v2sigma2(ab-ab)", "v2sigma2(ab-bb)", "v2sigma2(bb-bb)");
           fprintf(out, sfmt3, "v2rho(a)sigma(aa)", "v2rho(a)sigma(ab)", "v2rho(a)sigma(bb)");
           fprintf(out, sfmt3, "v2rho(b)sigma(aa)", "v2rho(b)sigma(ab)", "v2rho(b)sigma(bb)");
         }
-        if(family & (XC_FAMILY_MGGA)) {
+        if(IS_MGGA(family)) {
           fprintf(out, sfmt3, "v2lapl2(aa)", "v2lapl2(ab)", "v2lapl2(bb)");
           fprintf(out, sfmt3, "v2tau2(aa)", "v2tau2(ab)", "v2tau2(bb)");
           fprintf(out, sfmt3, "v2rholapl(aa)", "v2rholapl(ab)", "v2rholapl(bb)");
@@ -536,12 +542,12 @@ int main(int argc, char *argv[])
         }
       } else {
         fprintf(out,sfmt,"v2rho");
-        if(family & (XC_FAMILY_GGA | XC_FAMILY_MGGA)) {
+        if(IS_GGA(family)) {
           fprintf(out, sfmt, "v2sigma2");
           fprintf(out, sfmt, "v2rhosigma");
         }
 
-        if(family & (XC_FAMILY_MGGA)) {
+        if(IS_MGGA(family)) {
           fprintf(out, sfmt, "v2lapl2");
           fprintf(out, sfmt, "v2tau2");
           fprintf(out, sfmt, "v2rholapl");
@@ -569,17 +575,17 @@ int main(int argc, char *argv[])
       case (1): /* first order derivatives */
         if (nspin == XC_POLARIZED) {
           print2(out,  d.vrho, 2 * i);
-          if (family & (XC_FAMILY_GGA | XC_FAMILY_MGGA))
+          if (IS_GGA(family))
             print3(out, d.vsigma, 3 * i);
-          if (family & (XC_FAMILY_MGGA)) {
+          if (IS_MGGA(family)) {
             plapl2(out, d.vlapl, 2 * i);
             ptau2(out, d.vtau, 2 * i);
           }
         } else {
           print1(out, d.vrho, i);
-          if (family & (XC_FAMILY_GGA | XC_FAMILY_MGGA))
+          if (IS_GGA(family))
             print1(out, d.vsigma, i);
-          if (family & (XC_FAMILY_MGGA)) {
+          if (IS_MGGA(family)) {
             plapl1(out, d.vlapl, i);
             ptau1(out, d.vtau, i);
           }
@@ -589,13 +595,13 @@ int main(int argc, char *argv[])
       case (2): /* second order derivatives */
         if (nspin == XC_POLARIZED) {
           print3(out, d.v2rho2, 3*i);
-          if(family & (XC_FAMILY_GGA | XC_FAMILY_MGGA)) {
+          if(IS_GGA(family)) {
             print3(out, d.v2sigma2, 6*i);
             print3(out, d.v2sigma2, 6*i + 3);
             print3(out, d.v2rhosigma, 6*i);
             print3(out, d.v2rhosigma, 6*i + 3);
           }
-          if(family & (XC_FAMILY_MGGA)) {
+          if(IS_MGGA(family)) {
             plapl3(out, d.v2lapl2, 3*i);
             ptau3(out, d.v2tau2, 3*i);
             plapl3(out, d.v2rholapl, 3*i);
@@ -608,11 +614,11 @@ int main(int argc, char *argv[])
           }
         } else {
           print1(out, d.v2rho2, i);
-          if(family & (XC_FAMILY_GGA | XC_FAMILY_MGGA)) {
+          if(IS_GGA(family)) {
             print1(out, d.v2sigma2, i);
             print1(out, d.v2rhosigma, i);
           }
-          if(family & (XC_FAMILY_MGGA)) {
+          if(IS_MGGA(family)) {
             plapl1(out, d.v2lapl2, i);
             ptau1(out, d.v2tau2, i);
             plapl1(out, d.v2rholapl, i);

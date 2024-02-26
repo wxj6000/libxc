@@ -32,11 +32,9 @@ xc_mix_init(xc_func_type *p, int n_funcs, const int *funcs_id, const double *mix
   }
 
   /* initialize variables */
-  p->hyb_number_terms = 0;
-  p->hyb_type  = NULL;
-  p->hyb_coeff = NULL;
-  p->hyb_omega = NULL;
-
+  p->cam_alpha = 0.0;
+  p->cam_beta  = 0.0;
+  p->cam_omega = 0.0;
   p->nlc_b     = 0.0;
   p->nlc_C     = 0.0;
 }
@@ -59,9 +57,9 @@ static void add_to_mix(size_t np, double * dst, double coeff, const double *src)
 #endif
 }
 
-#define is_mgga(id)   ((id) == XC_FAMILY_MGGA)
-#define is_gga(id)    ((id) == XC_FAMILY_GGA || is_mgga(id))
-#define is_lda(id)    ((id) == XC_FAMILY_LDA ||  is_gga(id))
+#define is_mgga(id)   ((id) == XC_FAMILY_MGGA || (id) == XC_FAMILY_HYB_MGGA)
+#define is_gga(id)    ((id) == XC_FAMILY_GGA  || (id) == XC_FAMILY_HYB_GGA || is_mgga(id))
+#define is_lda(id)    ((id) == XC_FAMILY_LDA  || (id) == XC_FAMILY_HYB_LDA ||  is_gga(id))
 #define safe_free(pt) if(pt != NULL) libxc_free(pt)
 #define sum_var(VAR) add_to_mix(np*dim->VAR, VAR, func->mix_coef[ii], x ## VAR);
 
@@ -155,14 +153,17 @@ xc_mix_func(const xc_func_type *func, size_t np,
     /* Evaluate the functional */
     switch(aux->info->family){
     case XC_FAMILY_LDA:
+    case XC_FAMILY_HYB_LDA:
       xc_lda(aux, np, rho,
              xzk LDA_OUT_PARAMS_NO_EXC(XC_COMMA, x));
       break;
     case XC_FAMILY_GGA:
+    case XC_FAMILY_HYB_GGA:
       xc_gga(aux, np, rho, sigma,
              xzk GGA_OUT_PARAMS_NO_EXC(XC_COMMA, x));
       break;
     case XC_FAMILY_MGGA:
+    case XC_FAMILY_HYB_MGGA:
       xc_mgga(aux, np, rho, sigma, lapl, tau,
               xzk MGGA_OUT_PARAMS_NO_EXC(XC_COMMA, x));
       break;
