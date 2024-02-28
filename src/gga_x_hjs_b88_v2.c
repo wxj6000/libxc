@@ -29,7 +29,6 @@ gga_x_hjs_init(xc_func_type *p)
   p->params = libxc_malloc(sizeof(gga_x_hjs_params));
 
   xc_hyb_init_hybrid(p, 0.0);
-  p->hyb_type[0] = XC_HYB_NONE;
 }
 
 #include "maple2c/gga_exc/gga_x_hjs_b88_v2.c"

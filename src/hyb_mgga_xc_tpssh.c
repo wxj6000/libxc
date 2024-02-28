@@ -38,7 +38,7 @@ tpssh_set_ext_params(xc_func_type *p, const double *ext_params)
   cx = get_ext_param(p, ext_params, 0);
 
   p->mix_coef[0] = 1.0 - cx;
-  p->hyb_coeff[0] = cx;
+  p->cam_alpha = cx;
 }
 
 
@@ -49,7 +49,7 @@ const xc_func_info_type xc_func_info_hyb_mgga_xc_tpssh = {
   XC_HYB_MGGA_XC_TPSSH,
   XC_EXCHANGE_CORRELATION,
   "TPSSh",
-  XC_FAMILY_MGGA,
+  XC_FAMILY_HYB_MGGA,
   {&xc_ref_Staroverov2003_12129, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_NEEDS_TAU | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -77,7 +77,7 @@ const xc_func_info_type xc_func_info_hyb_mgga_xc_revtpssh = {
   XC_HYB_MGGA_XC_REVTPSSH,
   XC_EXCHANGE_CORRELATION,
   "revTPSSh",
-  XC_FAMILY_MGGA,
+  XC_FAMILY_HYB_MGGA,
   {&xc_ref_Csonka2010_3688, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_NEEDS_TAU | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -103,7 +103,7 @@ const xc_func_info_type xc_func_info_hyb_mgga_xc_tpss0 = {
   XC_HYB_MGGA_XC_TPSS0,
   XC_EXCHANGE_CORRELATION,
   "TPSS0 with 25% exact exchange",
-  XC_FAMILY_MGGA,
+  XC_FAMILY_HYB_MGGA,
   {&xc_ref_Grimme2005_3067, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_NEEDS_TAU | XC_FLAGS_I_HAVE_ALL,
   1e-15,

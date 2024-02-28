@@ -40,7 +40,7 @@ pbeh_set_ext_params(xc_func_type *p, const double *ext_params)
   beta = get_ext_param(p, ext_params, 0);
 
   p->mix_coef[0] = 1.0 - beta;
-  p->hyb_coeff[0] = beta;
+  p->cam_alpha = beta;
 }
 
 
@@ -64,7 +64,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_pbeh = {
   XC_HYB_GGA_XC_PBEH,
   XC_EXCHANGE_CORRELATION,
   "PBEH (PBE0)",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Adamo1999_6158, &xc_ref_Ernzerhof1999_5029, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -80,7 +80,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_pbe50 = {
   XC_HYB_GGA_XC_PBE50,
   XC_EXCHANGE_CORRELATION,
   "PBE50",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Bernard2012_204103, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -96,7 +96,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_pbe0_13 = {
   XC_HYB_GGA_XC_PBE0_13,
   XC_EXCHANGE_CORRELATION,
   "PBE0-1/3",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Cortona2012_086101, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -112,7 +112,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_pbe38 = {
   XC_HYB_GGA_XC_PBE38,
   XC_EXCHANGE_CORRELATION,
   "PBE38: PBE0 with 3/8 = 37.5% exact exchange",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Grimme2010_154104, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -128,7 +128,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_pbe_2x = {
   XC_HYB_GGA_XC_PBE_2X,
   XC_EXCHANGE_CORRELATION,
   "PBE-2X: PBE0 with 56% exact exchange",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Tahchieva2018_4806, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -156,7 +156,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_hpbeint = {
   XC_HYB_GGA_XC_HPBEINT,
   XC_EXCHANGE_CORRELATION,
   "hPBEint",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Fabiano2013_673, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL | XC_FLAGS_DEVELOPMENT,
   1e-15,
@@ -185,7 +185,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_pbe_mol0 = {
   XC_HYB_GGA_XC_PBE_MOL0,
   XC_EXCHANGE_CORRELATION,
   "PBEmol0",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_delCampo2012_104108, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -214,7 +214,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_pbe_sol0 = {
   XC_HYB_GGA_XC_PBE_SOL0,
   XC_EXCHANGE_CORRELATION,
   "PBEsol0",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_delCampo2012_104108, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -248,7 +248,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_pbeb0 = {
   XC_HYB_GGA_XC_PBEB0,
   XC_EXCHANGE_CORRELATION,
   "PBEbeta0",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_delCampo2012_104108, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -282,7 +282,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_pbe_molb0 = {
   XC_HYB_GGA_XC_PBE_MOLB0,
   XC_EXCHANGE_CORRELATION,
   "PBEmolbeta0",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_delCampo2012_104108, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -352,7 +352,7 @@ relpbe_set_ext_params(xc_func_type *p, const double *ext_params)
   p->mix_coef[1] = scalggac;
   p->mix_coef[2] = scalldac-scalggac;
 
-  p->hyb_coeff[0] = cx;
+  p->cam_alpha = cx;
 }
 
 #ifdef __cplusplus
@@ -362,7 +362,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_relpbe0 = {
   XC_HYB_GGA_XC_RELPBE0,
   XC_EXCHANGE_CORRELATION,
   "relPBE0 a.k.a. relPBE: PBE0 refitted for actinide compounds",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Mitrofanov2021_161103, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,

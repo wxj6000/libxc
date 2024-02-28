@@ -89,11 +89,10 @@ libxc_la_FUNC_SOURCES = \
 	hyb_gga_xc_edf2.c gga_k_pw86.c gga_k_mpbe.c gga_k_apbe.c	\
 	gga_x_fd_lb94.c gga_x_ncap.c gga_c_chachiyo.c			\
 	hyb_gga_xc_lc_blyp.c gga_c_pbe_vwn.c gga_x_s12.c		\
-	gga_x_lcgau.c hyb_gga_xc_b2plyp.c hyb_gga_xc_src1_blyp.c	\
 	gga_k_lkt.c gga_k_lgap.c gga_k_vt84f.c gga_k_lgap_ge.c		\
 	gga_c_ccdf.c gga_k_rational_p.c gga_k_pg.c gga_c_p86vwn.c	\
 	gga_x_ityh_optx.c hyb_gga_xc_cam_o3lyp.c gga_x_ityh_pbe.c	\
-	gga_c_lypr.c hyb_gga_xc_pbe_dh.c hyb_gga_x_cam_s12.c		\
+	gga_c_lypr.c hyb_gga_x_cam_s12.c		\
 	hyb_gga_xc_case21.c gga_x_pbe_erf_gws.c gga_c_pbe_erf_gws.c     \
 	mgga.c \
 	mgga_x_lta.c mgga_x_tpss.c mgga_x_br89.c mgga_x_gvt4.c		\
@@ -145,7 +144,7 @@ noinst_HEADERS = \
 	work_lda.c work_lda_inc.c work_gga.c work_gga_inc.c	\
 	work_mgga.c work_mgga_inc.c \
 	libxc_master.F90 \
-        funcs_lda.c funcs_gga.c funcs_mgga.c funcs_key.c \
+        funcs_lda.c funcs_hyb_lda.c funcs_gga.c funcs_hyb_gga.c funcs_mgga.c funcs_hyb_mgga.c funcs_key.c \
 	libxc_inc.f90
 include_HEADERS = xc.h xc_funcs.h xc_funcs_removed.h xc_funcs_worker.h
 

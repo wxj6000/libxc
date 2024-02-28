@@ -88,6 +88,14 @@ int xc_family_from_id(int id, int *family, int *number)
     }
   }
 
+  for(ii=0; xc_hyb_lda_known_funct[ii]!=NULL; ii++){
+    if(xc_hyb_lda_known_funct[ii]->number == id){
+      if(family != NULL) *family = XC_FAMILY_HYB_LDA;
+      if(number != NULL) *number = ii;
+      return XC_FAMILY_HYB_LDA;
+    }
+  }
+
   /* or is it a GGA? */
   for(ii=0; xc_gga_known_funct[ii]!=NULL; ii++){
     if(xc_gga_known_funct[ii]->number == id){
@@ -97,12 +105,28 @@ int xc_family_from_id(int id, int *family, int *number)
     }
   }
 
+  for(ii=0; xc_hyb_gga_known_funct[ii]!=NULL; ii++){
+    if(xc_hyb_gga_known_funct[ii]->number == id){
+      if(family != NULL) *family = XC_FAMILY_HYB_GGA;
+      if(number != NULL) *number = ii;
+      return XC_FAMILY_HYB_GGA;
+    }
+  }
+
   /* or is it a meta GGA? */
   for(ii=0; xc_mgga_known_funct[ii]!=NULL; ii++){
     if(xc_mgga_known_funct[ii]->number == id){
       if(family != NULL) *family = XC_FAMILY_MGGA;
       if(number != NULL) *number = ii;
       return XC_FAMILY_MGGA;
+    }
+  }
+
+  for(ii=0; xc_hyb_mgga_known_funct[ii]!=NULL; ii++){
+    if(xc_hyb_mgga_known_funct[ii]->number == id){
+      if(family != NULL) *family = XC_FAMILY_HYB_MGGA;
+      if(number != NULL) *number = ii;
+      return XC_FAMILY_HYB_MGGA;
     }
   }
 
@@ -241,10 +265,9 @@ void xc_func_nullify(xc_func_type *func)
   func->func_aux   = NULL;
   func->mix_coef   = NULL;
 
-  func->hyb_number_terms = 0;
-  func->hyb_type   = NULL;
-  func->hyb_coeff  = NULL;
-  func->hyb_omega  = NULL;
+  func->cam_omega  = 0.0;
+  func->cam_alpha  = 0.0;
+  func->cam_beta   = 0.0;
 
   func->nlc_b = func->nlc_C = 0.0;
 
@@ -283,13 +306,28 @@ int xc_func_init(xc_func_type *func, int functional, int nspin)
     internal_counters_set_lda(func->nspin, &(func->dim));
     break;
 
+  case(XC_FAMILY_HYB_LDA):
+    *finfo = *xc_hyb_lda_known_funct[number];
+    internal_counters_set_lda(func->nspin, &(func->dim));
+    break;
+
   case(XC_FAMILY_GGA):
     *finfo = *xc_gga_known_funct[number];
     internal_counters_set_gga(func->nspin, &(func->dim));
     break;
 
+  case(XC_FAMILY_HYB_GGA):
+    *finfo = *xc_hyb_gga_known_funct[number];
+    internal_counters_set_gga(func->nspin, &(func->dim));
+    break;
+
   case(XC_FAMILY_MGGA):
     *finfo = *xc_mgga_known_funct[number];
+    internal_counters_set_mgga(func->nspin, &(func->dim));
+    break;
+
+  case(XC_FAMILY_HYB_MGGA):
+    *finfo = *xc_hyb_mgga_known_funct[number];
     internal_counters_set_mgga(func->nspin, &(func->dim));
     break;
 
@@ -365,13 +403,6 @@ void xc_func_end(xc_func_type *func)
   /* deallocate coefficients for mixed functionals */
   if(func->mix_coef != NULL)
     libxc_free(func->mix_coef);
-
-  /* deallocate hybrid coefficients */
-  if(func->hyb_type != NULL){
-    libxc_free(func->hyb_type);
-    libxc_free(func->hyb_omega);
-    libxc_free(func->hyb_coeff);
-  }
 
   /* deallocate any used parameter */
   if(func->ext_params != NULL)
