@@ -19,7 +19,6 @@ xc_lda_x_erf_init(xc_func_type *p)
 {
   assert(p!=NULL);
   xc_hyb_init_hybrid(p, 0.0);
-  p->hyb_type[0] = XC_HYB_NONE;
 }
 
 static const char  *omega_names[]  = {"_omega"};
@@ -58,7 +57,7 @@ const xc_func_info_type xc_func_info_hyb_lda_x_erf = {
   "Long-range corrected functional based on short-range LDA exchange (erfc)",
   XC_FAMILY_LDA,
   {&xc_ref_Gill1996_1005, &xc_ref_Toulouse2004_1047, &xc_ref_Tawada2004_8425, NULL, NULL},
-  XC_FLAGS_3D | MAPLE2C_FLAGS,
+  XC_FLAGS_3D | XC_FLAGS_HYB_CAM | MAPLE2C_FLAGS,
   1e-15,
   {1, omega_names, omega_desc, omega_values, set_ext_params_cpy_lc},
   xc_hyb_lda_x_erf_init, NULL,

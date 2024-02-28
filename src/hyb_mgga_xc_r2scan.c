@@ -40,7 +40,7 @@ set_ext_params(xc_func_type *p, const double *ext_params)
   cx = get_ext_param(p, ext_params, 0);
 
   p->mix_coef[0] = 1.0 - cx;
-  p->hyb_coeff[0] = cx;
+  p->cam_alpha = cx;
 }
 
 #ifdef __cplusplus
@@ -50,7 +50,7 @@ const xc_func_info_type xc_func_info_hyb_mgga_xc_r2scanh = {
   XC_HYB_MGGA_XC_R2SCANH,
   XC_EXCHANGE_CORRELATION,
   "r2SCANh: r2SCAN hybrid like TPSSh with 10% exact exchange",
-  XC_FAMILY_MGGA,
+  XC_FAMILY_HYB_MGGA,
   {&xc_ref_Bursch2022_134105, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_NEEDS_TAU | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -66,7 +66,7 @@ const xc_func_info_type xc_func_info_hyb_mgga_xc_r2scan0 = {
   XC_HYB_MGGA_XC_R2SCAN0,
   XC_EXCHANGE_CORRELATION,
   "r2SCAN0: r2SCAN hybrid like PBE0 with 25% exact exchange",
-  XC_FAMILY_MGGA,
+  XC_FAMILY_HYB_MGGA,
   {&xc_ref_Bursch2022_134105, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_NEEDS_TAU | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -82,7 +82,7 @@ const xc_func_info_type xc_func_info_hyb_mgga_xc_r2scan50 = {
   XC_HYB_MGGA_XC_R2SCAN50,
   XC_EXCHANGE_CORRELATION,
   "r2SCAN50: r2SCAN hybrid like PBE50 with 50% exact exchange",
-  XC_FAMILY_MGGA,
+  XC_FAMILY_HYB_MGGA,
   {&xc_ref_Bursch2022_134105, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_NEEDS_TAU | XC_FLAGS_I_HAVE_ALL,
   1e-15,

@@ -20,7 +20,7 @@ $define lda_c_pw_params
 $include "lda_c_pw.mpl"
 
 (*params*)
-lda_c_pw_erf_mu := p_a_hyb_omega_0_:
+lda_c_pw_erf_mu := p_a_cam_omega:
 lda_c_pw_erf_b0 := rs -> 0.784949*rs:
 lda_c_pw_erf_alpha := (4/(9*Pi))^(1/3):
 

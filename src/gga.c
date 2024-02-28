@@ -9,6 +9,7 @@
 
 #include "util.h"
 #include "funcs_gga.c"
+#include "funcs_hyb_gga.c"
 
 /* macro to check is a buffer exists */
 #define check_out_var(VAR) if(out->VAR == NULL){fprintf(stderr, "error: output variable, out->" #VAR ", is a null pointer\n"); exit(1);}

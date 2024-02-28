@@ -1894,35 +1894,14 @@
  ! TASK exchange of Aschebrock and Kuemmel
  integer(c_int), parameter, public :: XC_MGGA_X_TASK  =    707
 
- ! Long-range Gaussian
- integer(c_int), parameter, public :: XC_HYB_GGA_X_LCGAU  =    708
-
- ! Long-range Gaussian fitted to core excitations
- integer(c_int), parameter, public :: XC_HYB_GGA_X_LCGAU_CORE  =    709
-
- ! Long-range Gaussian 2
- integer(c_int), parameter, public :: XC_HYB_GGA_X_LC2GAU  =    710
-
  ! MGGAC exchange of Patra et al
  integer(c_int), parameter, public :: XC_MGGA_X_MGGAC  =    711
 
  ! beta fitted to LC20 to be used with MGGAC
  integer(c_int), parameter, public :: XC_GGA_C_MGGAC  =    712
 
- ! Double hybrid of Grimme
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_B2PLYP  =    713
-
- ! Hybrid with two range separations (form 1)
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_SRC1_BLYP  =    714
-
- ! Hybrid with two range separations (form 2)
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_SRC2_BLYP  =    715
-
  ! modified Becke-Roussel by Patra et al
  integer(c_int), parameter, public :: XC_MGGA_X_MBR  =    716
-
- ! Middle-range hybrid from Henderson, Izmaylov, Scuseria, and Savin
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_HISS  =    717
 
  ! Deorbitalized re-regularized SCAN (r2SCAN-L) exchange
  integer(c_int), parameter, public :: XC_MGGA_X_R2SCANL  =    718
@@ -1933,29 +1912,8 @@
  ! Long-range corrected TM-LYP by Jana et al
  integer(c_int), parameter, public :: XC_HYB_MGGA_XC_LC_TMLYP  =    720
 
- ! Double hybrid of Karton et al
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_B2GPPLYP  =    721
-
- ! Double hybrid of Casanova-Paez, Dardis and Goerigk
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_WB2PLYP  =    722
-
- ! Double hybrid of Casanova-Paez, Dardis and Goerigk
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_WB2GPPLYP  =    723
-
  ! modified TASK exchange
  integer(c_int), parameter, public :: XC_MGGA_X_MTASK  =    724
-
- ! Double hybrid of Bremond and Adamo
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_PBE0_DH  =    725
-
- ! Double hybrid of Chai and Mao
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_PBE0_2  =    726
-
- ! Double hybrid of Bremond et al
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_PBE_QIDH  =    727
-
- ! Double hybrid of Toulouse et al
- integer(c_int), parameter, public :: XC_HYB_GGA_XC_LS1DH_PBE  =    728
 
  ! Functional for quasi-1D systems
  integer(c_int), parameter, public :: XC_GGA_X_Q1D  =    734

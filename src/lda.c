@@ -9,6 +9,7 @@
 
 #include "util.h"
 #include "funcs_lda.c"
+#include "funcs_hyb_lda.c"
 
 void
 xc_lda_sanity_check(const xc_func_info_type *info, int order, xc_lda_out_params *out)

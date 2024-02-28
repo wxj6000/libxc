@@ -119,7 +119,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_case21 = {
   XC_HYB_GGA_XC_CASE21,
   XC_EXCHANGE_CORRELATION,
   "CASE21: Constrained And Smoothed semi-Empirical 2021 functional",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Sparrow2022_6896, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | MAPLE2C_FLAGS,
   1e-15,

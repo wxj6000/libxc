@@ -70,7 +70,7 @@ b3pw91_set_ext_params(xc_func_type *p, const double *ext_params)
   p->mix_coef[2] = 1.0 - ac;
   p->mix_coef[3] = ac;
 
-  p->hyb_coeff[0] = a0;
+  p->cam_alpha = a0;
 }
 
 #ifdef __cplusplus
@@ -80,7 +80,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b3pw91 = {
   XC_HYB_GGA_XC_B3PW91,
   XC_EXCHANGE_CORRELATION,
   "The original (ACM, B3PW91) hybrid of Becke",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Becke1993_5648, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -107,7 +107,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b3lyp = {
   XC_HYB_GGA_XC_B3LYP,
   XC_EXCHANGE_CORRELATION,
   "B3LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Stephens1994_11623, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -134,7 +134,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b3lyp5 = {
   XC_HYB_GGA_XC_B3LYP5,
   XC_EXCHANGE_CORRELATION,
   "B3LYP with VWN functional 5 instead of RPA",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Stephens1994_11623, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -160,7 +160,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b3lyp3 = {
   XC_HYB_GGA_XC_B3LYP3,
   XC_EXCHANGE_CORRELATION,
   "B3LYP with VWN functional 3 instead of RPA",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Stephens1994_11623, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -186,7 +186,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b3p86 = {
   XC_HYB_GGA_XC_B3P86,
   XC_EXCHANGE_CORRELATION,
   "B3P86",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_gaussianimplementation, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -212,7 +212,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b3p86_nwchem = {
   XC_HYB_GGA_XC_B3P86_NWCHEM,
   XC_EXCHANGE_CORRELATION,
   "B3P86, NWChem version",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_nwchemimplementation, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -239,7 +239,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_mpw3pw = {
   XC_HYB_GGA_XC_MPW3PW,
   XC_EXCHANGE_CORRELATION,
   "MPW3PW of Adamo & Barone",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Adamo1998_664, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -266,7 +266,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_mpw3lyp = {
   XC_HYB_GGA_XC_MPW3LYP,
   XC_EXCHANGE_CORRELATION,
   "MPW3LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Zhao2004_6908, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -303,7 +303,7 @@ rc04_set_ext_params(xc_func_type *p, const double *ext_params)
   p->mix_coef[2] = 1.0 - d*ac;
   p->mix_coef[3] = ac;
 
-  p->hyb_coeff[0] = a0;
+  p->cam_alpha = a0;
 }
 
 void
@@ -323,7 +323,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_mb3lyp_rc04 = {
   XC_HYB_GGA_XC_MB3LYP_RC04,
   XC_EXCHANGE_CORRELATION,
   "B3LYP with RC04 LDA",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Tognetti2007_381, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -340,7 +340,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_revb3lyp = {
   XC_HYB_GGA_XC_REVB3LYP,
   XC_EXCHANGE_CORRELATION,
   "Revised B3LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Lu2013_64, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -358,7 +358,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b3lyps = {
   XC_HYB_GGA_XC_B3LYPS,
   XC_EXCHANGE_CORRELATION,
   "B3LYP*",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Reiher2001_48, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -386,7 +386,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b5050lyp = {
   XC_HYB_GGA_XC_B5050LYP,
   XC_EXCHANGE_CORRELATION,
   "B5050LYP",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Shao2003_4807, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -420,7 +420,7 @@ kmlyp_set_ext_params(xc_func_type *p, const double *ext_params)
   p->mix_coef[1] = 1.0 - ac;
   p->mix_coef[2] = ac;
 
-  p->hyb_coeff[0] = a0;
+  p->cam_alpha = a0;
 
 }
 
@@ -441,7 +441,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_kmlyp = {
   XC_HYB_GGA_XC_KMLYP,
   XC_EXCHANGE_CORRELATION,
   "Kang-Musgrave hybrid",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Kang2001_11040, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -459,7 +459,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_qtp17 = {
   XC_HYB_GGA_XC_QTP17,
   XC_EXCHANGE_CORRELATION,
   "Global hybrid for vertical ionization potentials",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Jin2018_064111, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -504,7 +504,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_apf = {
   XC_HYB_GGA_XC_APF,
   XC_EXCHANGE_CORRELATION,
   "APF hybrid functional",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Austin2012_4989, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -540,7 +540,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_wc04 = {
   XC_HYB_GGA_XC_WC04,
   XC_EXCHANGE_CORRELATION,
   "hybrid fitted to carbon NMR shifts",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Wiitala2006_1085, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -577,7 +577,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_wp04 = {
   XC_HYB_GGA_XC_WP04,
   XC_EXCHANGE_CORRELATION,
   "hybrid fitted to proton NMR shifts",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Wiitala2006_1085, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -624,7 +624,7 @@ mcm1_set_ext_params(xc_func_type *p, const double *ext_params)
   p->mix_coef[2] = p6 - p5;
   p->mix_coef[3] = p5;
 
-  p->hyb_coeff[0] = p2;
+  p->cam_alpha = p2;
 }
 
 void
@@ -644,7 +644,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b3lyp_mcm1 = {
   XC_HYB_GGA_XC_B3LYP_MCM1,
   XC_EXCHANGE_CORRELATION,
   "B3LYP-MCM1",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Caldeira2019_62, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
@@ -660,7 +660,7 @@ const xc_func_info_type xc_func_info_hyb_gga_xc_b3lyp_mcm2 = {
   XC_HYB_GGA_XC_B3LYP_MCM2,
   XC_EXCHANGE_CORRELATION,
   "B3LYP-MCM2",
-  XC_FAMILY_GGA,
+  XC_FAMILY_HYB_GGA,
   {&xc_ref_Caldeira2019_62, NULL, NULL, NULL, NULL},
   XC_FLAGS_3D | XC_FLAGS_I_HAVE_ALL,
   1e-15,
