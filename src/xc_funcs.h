@@ -328,6 +328,7 @@
 #define  XC_LDA_C_EPC17_2                  329 /* epc17-2: electron-proton correlation 2017 for proton affinities */
 #define  XC_LDA_C_EPC18_1                  330 /* epc18-1: electron-proton correlation 2018 */
 #define  XC_LDA_C_EPC18_2                  331 /* epc18-2: electron-proton correlation 2018 for proton affinities */
+#define  XC_HYB_GGA_XC_OPB3LYP             386 /* opB3LYP */
 #define  XC_MGGA_C_CC                      387 /* Self-interaction corrected correlation functional by Schmidt et al */
 #define  XC_MGGA_C_CCALDA                  388 /* Iso-orbital corrected LDA correlation by Lebeda et al */
 #define  XC_HYB_MGGA_XC_BR3P86             389 /* BR3P86 hybrid meta-GGA from Neumann and Handy */

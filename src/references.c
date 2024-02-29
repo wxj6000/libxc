@@ -1595,6 +1595,13 @@ func_reference_type xc_ref_Lu2013_64 = {
   "Lu2013_64"
 };
 
+func_reference_type xc_ref_Lu2015_502 = {
+  "L. Lu.,  Int. J. Quantum Chem. 115, 502–509 (2015)",
+  "10.1002/qua.24876",
+  "@article{Lu2015_502,\n  author = {Lu, Lilin},\n  title = {Can {B3LYP} be improved by optimization of the proportions of exchange and correlation functionals?},\n  journal = {Int. J. Quantum Chem.},\n  volume = {115},\n  number = {8},\n  pages = {502--509},\n  doi = {10.1002/qua.24876},\n  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/qua.24876},\n  year = {2015}\n}\n",
+  "Lu2015_502"
+};
+
 func_reference_type xc_ref_Ludena1986 = {
   "E. V. Ludeña. In F. B. Malik, editor, Cond. Matt. Theor., volume 1, 183. New York, 1986. Plenum.",
   "",

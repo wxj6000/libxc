@@ -239,6 +239,7 @@ extern func_reference_type xc_ref_Livshits2007_2932;
 extern func_reference_type xc_ref_Loos2013_064108;
 extern func_reference_type xc_ref_Loos2017_114108;
 extern func_reference_type xc_ref_Lu2013_64;
+extern func_reference_type xc_ref_Lu2015_502;
 extern func_reference_type xc_ref_Ludena1986;
 extern func_reference_type xc_ref_Lundgaard2016_235162;
 extern func_reference_type xc_ref_Luo2018_041111;
