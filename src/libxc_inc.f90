@@ -988,6 +988,9 @@
  ! epc18-2: electron-proton correlation 2018 for proton affinities
  integer(c_int), parameter, public :: XC_LDA_C_EPC18_2  =    331
 
+ ! opB3LYP
+ integer(c_int), parameter, public :: XC_HYB_GGA_XC_OPB3LYP  =    386
+
  ! Self-interaction corrected correlation functional by Schmidt et al
  integer(c_int), parameter, public :: XC_MGGA_C_CC  =    387
 
