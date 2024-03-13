@@ -148,6 +148,53 @@ vsigma [[0.00547993]
  [0.00425432]]
 ```
 
+## ADDING NEW FUNCTIONALS
+
+### Maple implementation
+
+The typical process to add a new functional starts with developing the
+Maple implementation of the base density functional approximation:
+implement the exchange-correlation energy density per particle in
+Maple; see the `maple/` directory for existing implementations of
+various functionals. In the second step, one generates the C source
+with Maple by running `python3 scripts/maple2c.py
+--functional=NAME_OF_FUNCTIONAL --maxorder=4`.  Now, the functional's
+kernel is in the corresponding subdirectory of `src/maple2c/`.
+
+### Libxc definition
+
+Having implemented the density functional approximation, the next step
+is to make Libxc know about it. This happens by writing a suitable
+implementation in `src/`. The definition of a functional consists of
+the following pieces:
+
+1. the `#define` macro definition at the top of the file, which
+contains the numerical functional identifier and a comment,
+2. declarations of any external parameters that are used by the Maple
+kernels and arrays specifying their default values, possibly
+supplemented with a parameter setter function, and
+3. the functional information, `xc_func_info_type`, which is
+essentially a constructor that specifies the type, literature
+references, flags, default parameters, thresholds, and worker
+functions of the functional.
+
+It is usually best to start from the implementation of a similar
+functional. Once you have added the Libxc definitions, regenerate the
+list of functionals with `make funcs`, or `python3
+../scripts/get_functional_info.py --srcdir=..` in the `src/`
+directory. This will generate the `funcs_*.c` files that contain the
+definitions of all the functionals, as well as the lists of
+functionals in `xc_funcs.h`, `xc_funcs_worker.h` and `libxc_inc.f90`.
+
+### Bibliography updates
+
+To add new reference(s) in the bibliography, add them in BibTex format
+in `libxc.bib`, following the style of the existing versions. To
+regenerate the list of references, stored in `src/references.h` and
+`src/references.c`, run `make references`, or `python3
+../scripts/get_references.py ../libxc.bib` in the `src/` directory.
+
+
 ## FILE ORGANIZATION
 
 The distribution is organized as follows
