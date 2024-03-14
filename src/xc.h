@@ -405,7 +405,10 @@ void xc_lda_new (const xc_func_type *p, int order, size_t np,
              const double *rho, xc_lda_out_params *out);
 void xc_gga_new (const xc_func_type *p, int order, size_t np,
              const double *rho, const double *sigma, xc_gga_out_params *out);
-  
+void xc_mgga_new(const xc_func_type *func, int order, size_t np,
+             const double *rho, const double *sigma, const double *lapl,
+             const double *tau, xc_mgga_out_params *out);
+
 /** Evaluate an     LDA functional */
 void xc_lda (const xc_func_type *p, size_t np, const double *rho,
              double *zk LDA_OUT_PARAMS_NO_EXC(XC_COMMA double *, ));
