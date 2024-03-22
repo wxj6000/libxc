@@ -9,7 +9,7 @@ Libxc is free software. It is distributed under the Mozilla Public
 License, version 2.0, see https://www.mozilla.org/en-US/MPL/2.0/.
 
 For more information, please check the manual at
-http://www.tddft.org/programs/Libxc
+http://libxc.gitlab.io
 
 ## CITATION
 
