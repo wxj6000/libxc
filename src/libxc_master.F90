@@ -123,7 +123,10 @@ module xc_f03_lib_m
     XC_FAMILY_GGA           =   2,     &
     XC_FAMILY_MGGA          =   4,     &
     XC_FAMILY_LCA           =   8,     &
-    XC_FAMILY_OEP           =  16
+    XC_FAMILY_OEP           =  16,     &
+    XC_FAMILY_HYB_GGA       =  32,     &
+    XC_FAMILY_HYB_MGGA      =  64,     &
+    XC_FAMILY_HYB_LDA       = 128
 
   integer(c_int), parameter, public :: &
     XC_FLAGS_HAVE_EXC        =     1,   &
@@ -135,11 +138,14 @@ module xc_f03_lib_m
     XC_FLAGS_1D              =    32,   &
     XC_FLAGS_2D              =    64,   &
     XC_FLAGS_3D              =   128,   &
+    XC_FLAGS_HYB_CAM         =   256,   &
+    XC_FLAGS_HYB_CAMY        =   512,   &
     XC_FLAGS_VV10            =  1024,   &
+    XC_FLAGS_HYB_LC          =  2048,   &
+    XC_FLAGS_HYB_LCY         =  4096,   &
     XC_FLAGS_STABLE          =  8192,   &
     XC_FLAGS_DEVELOPMENT     = 16384,   &
-    XC_FLAGS_NEEDS_LAPLACIAN = 32768,   &
-    XC_FLAGS_NEEDS_TAU       = 65536
+    XC_FLAGS_NEEDS_LAPLACIAN = 32768
 
   integer(c_int), parameter, public :: &
     XC_TAU_EXPLICIT         =     0,   &
