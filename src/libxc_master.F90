@@ -1677,9 +1677,9 @@ end interface
 
     strlen = len_trim(f_string)
 
-    forall (i=1:strlen)
+    do concurrent (i=1:strlen)
       c_string(i) = f_string(i:i)
-    end forall
+    end do
     c_string(strlen+1) = C_NULL_CHAR
 
   end function f_to_c_string
