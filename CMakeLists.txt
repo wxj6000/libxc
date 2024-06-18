@@ -121,7 +121,7 @@ configure_file(config.h.cmake.in config.h @ONLY)
 # special substitutions for pkgconfig files
 include(JoinPaths)
 join_paths(libdir_for_pc_file "\${exec_prefix}" "${CMAKE_INSTALL_LIBDIR}")
-join_paths(includedir_for_pc_file "\${prefix}" "${CMAKE_INSTALL_INCLUDEDIR}")
+join_paths(includedir_for_pc_file "\${prefix}" "${CMAKE_INSTALL_INCLUDEDIR}${NAMESPACE_INSTALL_INCLUDEDIR}")
 configure_file(cmake/libxc.pc.in libxc.pc @ONLY)
 
 # extract project soversion from source
@@ -554,7 +554,7 @@ install(TARGETS xc
   RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
   ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
   LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+  PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}${NAMESPACE_INSTALL_INCLUDEDIR})
 
 if(ENABLE_FORTRAN)
   configure_file(cmake/libxcf03.pc.in libxcf03.pc @ONLY)
@@ -563,7 +563,7 @@ if(ENABLE_FORTRAN)
     RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR}
     ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
     LIBRARY DESTINATION ${CMAKE_INSTALL_LIBDIR}
-    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
+    PUBLIC_HEADER DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}${NAMESPACE_INSTALL_INCLUDEDIR})
   install(FILES "${PROJECT_BINARY_DIR}/xc_f03_lib_m.mod" "${PROJECT_BINARY_DIR}/xc_f03_funcs_m.mod"
     DESTINATION ${CMAKE_INSTALL_INCLUDEDIR}${NAMESPACE_INSTALL_INCLUDEDIR})
   if(NOT MSVC)
@@ -576,7 +576,7 @@ endif()
 
 target_compile_definitions(xc INTERFACE USING_${PN})
 target_include_directories(xc INTERFACE
-  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}>)
+  $<INSTALL_INTERFACE:${CMAKE_INSTALL_INCLUDEDIR}${NAMESPACE_INSTALL_INCLUDEDIR}>)
 
 # <<<  Export Config  >>>
 
