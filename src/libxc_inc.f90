@@ -988,7 +988,13 @@
  ! epc18-2: electron-proton correlation 2018 for proton affinities
  integer(c_int), parameter, public :: XC_LDA_C_EPC18_2  =    331
 
- ! opB3LYP
+ ! Minnesota CF22D hybrid exchange functional
+ integer(c_int), parameter, public :: XC_HYB_MGGA_X_CF22D  =    340
+
+ ! Minnesota CF22D correlation functional
+ integer(c_int), parameter, public :: XC_MGGA_C_CF22D  =    341
+
+ ! opB3LYP: B3LYP reoptimized in 6-311++G(2d,2p) basis set
  integer(c_int), parameter, public :: XC_HYB_GGA_XC_OPB3LYP  =    386
 
  ! Self-interaction corrected correlation functional by Schmidt et al

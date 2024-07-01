@@ -1567,6 +1567,13 @@ func_reference_type xc_ref_Liu2000_29 = {
   "Liu2000_29"
 };
 
+func_reference_type xc_ref_Liu2022_48 = {
+  "Y. Liu, C. Zhang, Z. Liu, D. G. Truhlar, Y. Wang, and X. He.,  Nature Computational Science 3, 48–58 (2022)",
+  "10.1038/s43588-022-00371-5",
+  "@Article{Liu2022_48,\n  author = {Liu, Yiwei and Zhang, Cheng and Liu, Zhonghua and Truhlar, Donald G. and Wang, Ying and He, Xiao},\n  journal = {Nature Computational Science},\n  title = {Supervised learning of a chemistry functional with damped dispersion},\n  year = {2022},\n  issn = {2662-8457},\n  month = {December},\n  number = {1},\n  pages = {48--58},\n  volume = {3},\n  doi = {10.1038/s43588-022-00371-5},\n  publisher = {Springer Science and Business Media LLC}\n}\n",
+  "Liu2022_48"
+};
+
 func_reference_type xc_ref_Livshits2007_2932 = {
   "E. Livshits and R. Baer.,  Phys. Chem. Chem. Phys. 9, 2932-2941 (2007)",
   "10.1039/B617919C",

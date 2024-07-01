@@ -235,6 +235,7 @@ extern func_reference_type xc_ref_Lin2004_365;
 extern func_reference_type xc_ref_Lin2013_263;
 extern func_reference_type xc_ref_Liu1996_2211;
 extern func_reference_type xc_ref_Liu2000_29;
+extern func_reference_type xc_ref_Liu2022_48;
 extern func_reference_type xc_ref_Livshits2007_2932;
 extern func_reference_type xc_ref_Loos2013_064108;
 extern func_reference_type xc_ref_Loos2017_114108;
