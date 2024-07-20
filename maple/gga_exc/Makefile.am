@@ -39,7 +39,7 @@ gga_order_4 = gga_k_exp4.mpl gga_x_hjs_b88_v2.mpl gga_k_lc94.mpl	\
   gga_x_ityh_optx.mpl gga_x_ityh_pbe.mpl gga_c_lypr.mpl gga_x_q1d.mpl   \
   hyb_gga_x_cam_s12.mpl hyb_gga_xc_case21.mpl            \
   gga_k_rational_p.mpl gga_k_pg.mpl gga_c_pbe_erf_gws.mpl               \
-  gga_x_pbe_erf_gws.mpl
+  gga_x_pbe_erf_gws.mpl gga_x_bkl.mpl
 
 dist_noinst_SCRIPTS = $(gga_order_4)
 

@@ -988,6 +988,12 @@
  ! epc18-2: electron-proton correlation 2018 for proton affinities
  integer(c_int), parameter, public :: XC_LDA_C_EPC18_2  =    331
 
+ ! Type-I band gap functional by Bhattacharjee, Koshi and Lee
+ integer(c_int), parameter, public :: XC_GGA_X_BKL1  =    338
+
+ ! Type-II band gap functional by Bhattacharjee, Koshi and Lee
+ integer(c_int), parameter, public :: XC_GGA_X_BKL2  =    339
+
  ! Minnesota CF22D hybrid exchange functional
  integer(c_int), parameter, public :: XC_HYB_MGGA_X_CF22D  =    340
 
