@@ -251,6 +251,13 @@ func_reference_type xc_ref_Besley2009_10350 = {
   "Besley2009_10350"
 };
 
+func_reference_type xc_ref_Bhattacharjee2024 = {
+  "S. Bhattacharjee, N. A. Koshi, and S.-C. Lee. Customizing pbe exchange-correlation functionals: a comprehensive approach for band gap prediction in diverse semiconductors. 2024. URL: https://arxiv.org/abs/2311.11702, arXiv:2311.11702.",
+  "",
+  "@misc{Bhattacharjee2024,\n  author = {Bhattacharjee, Satadeep and Koshi, Namitha Anna and Lee, Seung-Cheol},\n  title = {Customizing PBE Exchange-Correlation functionals: A comprehensive approach for band gap prediction in diverse semiconductors},\n  year = {2024},\n  eprint = {2311.11702},\n  archivePrefix = {arXiv},\n  primaryClass = {cond-mat.mtrl-sci},\n  url = {https://arxiv.org/abs/2311.11702}\n}\n",
+  "Bhattacharjee2024"
+};
+
 func_reference_type xc_ref_Bilc2008_165107 = {
   "D. I. Bilc, R. Orlando, R. Shaltaf, G.-M. Rignanese, J. Íñiguez, and Ph. Ghosez.,  Phys. Rev. B 77, 165107 (2008)",
   "10.1103/PhysRevB.77.165107",
