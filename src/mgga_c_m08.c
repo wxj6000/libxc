@@ -18,6 +18,7 @@
 #define XC_MGGA_C_MN15_L      261 /* Minnesota MN15-L  correlation functional     */
 #define XC_MGGA_C_MN15        269 /* Minnesota MN15    correlation functional     */
 #define XC_MGGA_C_REVM11      172 /* Revised Minnesota M11 correlation functional */
+#define XC_MGGA_C_CF22D       341 /* Minnesota CF22D correlation functional    */
 
 typedef struct{
   const double m08_a[12], m08_b[12];
@@ -90,6 +91,13 @@ static const double par_revm11[N_PAR] = {
    8.4135687567e+00,  0.0000000000e+00,  0.0000000000e+00,  0.0000000000e+00,  0.0000000000e+00,  0.0000000000e+00,
    0.97328390240e+00, -2.16744503960e+00, -9.33183245720e+00, -12.9399606617e+00, -2.21293206600e+00, -2.95085491000e+00,
   -1.50663193600e+00,  0.00000000000e+00,  0.00000000000e+00,  0.00000000000e+00,  0.00000000000e+00,  0.00000000000e+00
+};
+
+static const double par_cf22d[N_PAR] = {
+  0.873863376,  0.078066142,  6.576550257, -1.126030147, -3.244797887, -2.186090839,
+ -3.489135041,  3.090689716,  3.866592474,  0.0,          0.0,          0.0,
+  0.828203832, -2.518707202, 10.436806314,  3.588267084, -5.789404145,  3.353560215,
+ -2.432384384, -1.147183331,  2.991316045,  0.0,          0.0,          0.0
 };
 
 static void
@@ -244,6 +252,22 @@ const xc_func_info_type xc_func_info_mgga_c_revm11 = {
   XC_FLAGS_3D | XC_FLAGS_NEEDS_TAU | MAPLE2C_FLAGS,
   1e-15,
   {N_PAR, names, desc, par_revm11, set_ext_params_cpy},
+  mgga_c_m08_init, NULL,
+  NULL, NULL, &work_mgga,
+};
+
+#ifdef __cplusplus
+extern "C"
+#endif
+const xc_func_info_type xc_func_info_mgga_c_cf22d = {
+  XC_MGGA_C_CF22D,
+  XC_CORRELATION,
+  "Minnesota CF22D correlation functional",
+  XC_FAMILY_MGGA,
+  {&xc_ref_Liu2022_48, NULL, NULL, NULL, NULL},
+  XC_FLAGS_3D | XC_FLAGS_NEEDS_TAU | MAPLE2C_FLAGS,
+  1e-15,
+  {N_PAR, names, desc, par_cf22d, set_ext_params_cpy},
   mgga_c_m08_init, NULL,
   NULL, NULL, &work_mgga,
 };

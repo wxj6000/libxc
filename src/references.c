@@ -251,6 +251,13 @@ func_reference_type xc_ref_Besley2009_10350 = {
   "Besley2009_10350"
 };
 
+func_reference_type xc_ref_Bhattacharjee2024 = {
+  "S. Bhattacharjee, N. A. Koshi, and S.-C. Lee. Customizing pbe exchange-correlation functionals: a comprehensive approach for band gap prediction in diverse semiconductors. 2024. URL: https://arxiv.org/abs/2311.11702, arXiv:2311.11702.",
+  "",
+  "@misc{Bhattacharjee2024,\n  author = {Bhattacharjee, Satadeep and Koshi, Namitha Anna and Lee, Seung-Cheol},\n  title = {Customizing PBE Exchange-Correlation functionals: A comprehensive approach for band gap prediction in diverse semiconductors},\n  year = {2024},\n  eprint = {2311.11702},\n  archivePrefix = {arXiv},\n  primaryClass = {cond-mat.mtrl-sci},\n  url = {https://arxiv.org/abs/2311.11702}\n}\n",
+  "Bhattacharjee2024"
+};
+
 func_reference_type xc_ref_Bilc2008_165107 = {
   "D. I. Bilc, R. Orlando, R. Shaltaf, G.-M. Rignanese, J. Íñiguez, and Ph. Ghosez.,  Phys. Rev. B 77, 165107 (2008)",
   "10.1103/PhysRevB.77.165107",
@@ -1567,6 +1574,13 @@ func_reference_type xc_ref_Liu2000_29 = {
   "Liu2000_29"
 };
 
+func_reference_type xc_ref_Liu2022_48 = {
+  "Y. Liu, C. Zhang, Z. Liu, D. G. Truhlar, Y. Wang, and X. He.,  Nature Computational Science 3, 48–58 (2022)",
+  "10.1038/s43588-022-00371-5",
+  "@Article{Liu2022_48,\n  author = {Liu, Yiwei and Zhang, Cheng and Liu, Zhonghua and Truhlar, Donald G. and Wang, Ying and He, Xiao},\n  journal = {Nature Computational Science},\n  title = {Supervised learning of a chemistry functional with damped dispersion},\n  year = {2022},\n  issn = {2662-8457},\n  month = {December},\n  number = {1},\n  pages = {48--58},\n  volume = {3},\n  doi = {10.1038/s43588-022-00371-5},\n  publisher = {Springer Science and Business Media LLC}\n}\n",
+  "Liu2022_48"
+};
+
 func_reference_type xc_ref_Livshits2007_2932 = {
   "E. Livshits and R. Baer.,  Phys. Chem. Chem. Phys. 9, 2932-2941 (2007)",
   "10.1039/B617919C",
@@ -1593,6 +1607,13 @@ func_reference_type xc_ref_Lu2013_64 = {
   "10.1016/j.comptc.2013.04.009",
   "@article{Lu2013_64,\n  author = {Lu, L. and Hu, H. and Hou, H. and Wang, B.},\n  title = {An improved {B3LYP} method in the calculation of organic thermochemistry and reactivity},\n  journal = {Comput. Theor. Chem.},\n  volume = {1015},\n  pages = {64},\n  year = {2013},\n  issn = {2210-271X},\n  doi = {10.1016/j.comptc.2013.04.009},\n  url = {http://www.sciencedirect.com/science/article/pii/S2210271X13001576}\n}\n",
   "Lu2013_64"
+};
+
+func_reference_type xc_ref_Lu2015_502 = {
+  "L. Lu.,  Int. J. Quantum Chem. 115, 502–509 (2015)",
+  "10.1002/qua.24876",
+  "@article{Lu2015_502,\n  author = {Lu, Lilin},\n  title = {Can {B3LYP} be improved by optimization of the proportions of exchange and correlation functionals?},\n  journal = {Int. J. Quantum Chem.},\n  volume = {115},\n  number = {8},\n  pages = {502--509},\n  doi = {10.1002/qua.24876},\n  url = {https://onlinelibrary.wiley.com/doi/abs/10.1002/qua.24876},\n  year = {2015}\n}\n",
+  "Lu2015_502"
 };
 
 func_reference_type xc_ref_Ludena1986 = {
