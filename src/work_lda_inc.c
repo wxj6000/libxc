@@ -124,15 +124,15 @@ WORK_LDA(ORDER_TXT, SPIN_TXT)
   //make a copy of 'p' and 'out' since they might be in host-only memory
   XC(func_type) *pcuda;
   xc_lda_out_params *outcuda;
-  cudaMalloc(pcuda, sizeof(XC(func_type)));
-  cudaMalloc(outcuda, sizeof(xc_lda_out_params));
+  cudaMalloc((void**)&pcuda, sizeof(XC(func_type)));
+  cudaMalloc((void**)&outcuda, sizeof(xc_lda_out_params));
 
   // move params to GPU first
   void *params;
   void *params_cuda;
   if (p->params_size > 0){
     params = (void *) p->params;
-    cudaMalloc(params_cuda, p->params_size);
+    cudaMalloc((void**)&params_cuda, p->params_size);
 
     cudaMemcpy(params_cuda, params, p->params_size, cudaMemcpyHostToDevice);
     p->params = params_cuda;
