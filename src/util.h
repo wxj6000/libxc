@@ -332,6 +332,7 @@ double xc_mgga_x_br89_get_x(double Q);
    Fortran side */
 void libxc_free(void *ptr);
 
+#ifndef HAVE_CUDA
 #define libxc_malloc malloc
 #define libxc_calloc calloc
 #define libxc_memset memset
