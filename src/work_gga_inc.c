@@ -146,7 +146,7 @@ const double *rho, const double *sigma, xc_gga_out_params *out)
 
 static void
 WORK_GGA(ORDER_TXT, SPIN_TXT)
-(const XC(func_type) *p, size_t np, const double *rho, const double *sigma,
+(XC(func_type) *p, size_t np, const double *rho, const double *sigma,
          xc_gga_out_params *out)
 {
   //make a copy of 'p' and 'out' since they might be in host-only memory

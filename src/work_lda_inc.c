@@ -119,7 +119,7 @@ WORK_LDA_GPU(ORDER_TXT, SPIN_TXT)
 
 static void
 WORK_LDA(ORDER_TXT, SPIN_TXT)
-(const XC(func_type) *p, size_t np, const double *rho, xc_lda_out_params *out)
+(XC(func_type) *p, size_t np, const double *rho, xc_lda_out_params *out)
 {
   //make a copy of 'p' and 'out' since they might be in host-only memory
   XC(func_type) *pcuda;

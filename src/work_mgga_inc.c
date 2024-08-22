@@ -215,7 +215,7 @@ WORK_MGGA_GPU(ORDER_TXT, SPIN_TXT)
 
 static void
 WORK_MGGA(ORDER_TXT, SPIN_TXT)
-(const XC(func_type) *p, size_t np,
+(XC(func_type) *p, size_t np,
  const double *rho, const double *sigma, const double *lapl, const double *tau,
  xc_mgga_out_params *out)
 {
