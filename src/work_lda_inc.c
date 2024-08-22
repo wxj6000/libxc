@@ -119,11 +119,14 @@ WORK_LDA_GPU(ORDER_TXT, SPIN_TXT)
 
 static void
 WORK_LDA(ORDER_TXT, SPIN_TXT)
-(XC(func_type) *p, size_t np, const double *rho, xc_lda_out_params *out)
+(const XC(func_type) *p, size_t np, const double *rho, xc_lda_out_params *out)
 {
   //make a copy of 'p' and 'out' since they might be in host-only memory
   XC(func_type) *pcuda;
+  XC(func_type) *pcopy;
   xc_lda_out_params *outcuda;
+  pcopy = (XC(func_type) *) malloc(sizeof(XC(func_type)));
+  memcpy(pcopy, p, sizeof(XC(func_type)));
   cudaMalloc((void**)&pcuda, sizeof(XC(func_type)));
   cudaMalloc((void**)&outcuda, sizeof(xc_lda_out_params));
 
@@ -131,11 +134,10 @@ WORK_LDA(ORDER_TXT, SPIN_TXT)
   void *params;
   void *params_cuda;
   if (p->params_size > 0){
-    params = (void *) p->params;
+    params = (void *) pcopy->params;
     cudaMalloc((void**)&params_cuda, p->params_size);
-
     cudaMemcpy(params_cuda, params, p->params_size, cudaMemcpyHostToDevice);
-    p->params = params_cuda;
+    pcopy->params = params_cuda;
   }
 
   // move xc_func to GPU
@@ -148,14 +150,19 @@ WORK_LDA(ORDER_TXT, SPIN_TXT)
   WORK_LDA_GPU(ORDER_TXT, SPIN_TXT)<<<nblocks, CUDA_BLOCK_SIZE>>>
     (pcuda, np, rho, outcuda);
 
+  free(pcopy);
+
   cudaFree(pcuda);
   cudaFree(outcuda);
 
   if (p->params_size > 0){
     cudaFree(params_cuda);
+  }
 
-    // change it back to CPU
-    p->params = params;
+  cudaError_t err = cudaGetLastError();
+  if (err != cudaSuccess) {
+    fprintf(stderr, "CUDA Error of work_lda: %s\n", cudaGetErrorString(err));
+    exit(EXIT_FAILURE);
   }
 }
 
