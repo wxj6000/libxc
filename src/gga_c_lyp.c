@@ -20,7 +20,8 @@ typedef struct{
 void xc_gga_c_lyp_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_c_lyp_params));
+  p->params = malloc(sizeof(gga_c_lyp_params)); 
+  p->params_size = sizeof(gga_c_lyp_params);
 }
 
 #define LYP_N_PAR 4

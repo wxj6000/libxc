@@ -96,7 +96,8 @@ static void
 mgga_c_m08_init(xc_func_type *p)
 {
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(mgga_c_m08_params));
+  p->params = malloc(sizeof(mgga_c_m08_params)); 
+  p->params_size = sizeof(mgga_c_m08_params);
 }
 
 #include "maple2c/mgga_exc/mgga_c_m08.c"

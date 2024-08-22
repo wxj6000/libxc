@@ -23,7 +23,8 @@ static void
 gga_x_ssb_sw_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_x_ssb_sw_params));
+  p->params = malloc(sizeof(gga_x_ssb_sw_params)); 
+  p->params_size = sizeof(gga_x_ssb_sw_params);
 }
 
 #define N_PAR 5

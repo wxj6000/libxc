@@ -194,7 +194,8 @@ static void
 gga_xc_b97_init(xc_func_type *p)
 {
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_xc_b97_params));
+  p->params = malloc(sizeof(gga_xc_b97_params)); 
+  p->params_size = sizeof(gga_xc_b97_params);
 
   if(p->info->number == XC_HYB_GGA_XC_B97   ||
      p->info->number == XC_HYB_GGA_XC_B97_1 ||

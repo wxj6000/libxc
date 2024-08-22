@@ -23,7 +23,8 @@ mgga_x_msb_init(xc_func_type *p)
   mgga_x_msb_params *params;
 
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(mgga_x_msb_params));
+  p->params = malloc(sizeof(mgga_x_msb_params)); 
+  p->params_size = sizeof(mgga_x_msb_params);
   params = (mgga_x_msb_params *)p->params;
 
   switch(p->info->number){

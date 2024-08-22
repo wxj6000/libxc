@@ -23,7 +23,8 @@ gga_k_apbe_init(xc_func_type *p)
   gga_k_apbeint_params *params;
 
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_k_apbeint_params));
+  p->params = malloc(sizeof(gga_k_apbeint_params)); 
+  p->params_size = sizeof(gga_k_apbeint_params);
   params = (gga_k_apbeint_params *) (p->params);
 
   switch(p->info->number){

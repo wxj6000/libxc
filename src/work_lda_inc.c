@@ -49,7 +49,7 @@ WORK_LDA(ORDER_TXT, SPIN_TXT)
     dens = (p->nspin == XC_POLARIZED) ? VAR(rho, ip, 0) + VAR(rho, ip, 1) : VAR(rho, ip, 0);
     if(dens < p->dens_threshold)
       continue;
-    
+
     /* sanity check of input parameters */
     my_rho[0] = m_max(p->dens_threshold, VAR(rho, ip, 0));
     if(p->nspin == XC_POLARIZED){
@@ -122,9 +122,23 @@ WORK_LDA(ORDER_TXT, SPIN_TXT)
 (const XC(func_type) *p, size_t np, const double *rho, xc_lda_out_params *out)
 {
   //make a copy of 'p' and 'out' since they might be in host-only memory
-  XC(func_type) *pcuda = (XC(func_type) *) libxc_malloc(sizeof(XC(func_type)));
-  xc_lda_out_params *outcuda = (xc_lda_out_params *) libxc_malloc(sizeof(xc_lda_out_params));
+  XC(func_type) *pcuda;
+  xc_lda_out_params *outcuda;
+  cudaMalloc(pcuda, sizeof(XC(func_type)));
+  cudaMalloc(outcuda, sizeof(xc_lda_out_params));
 
+  // move params to GPU first
+  void *params;
+  void *params_cuda;
+  if (p->params_size > 0){
+    params = (void *) p->params;
+    cudaMalloc(params_cuda, p->params_size);
+
+    cudaMemcpy(params_cuda, params, p->params_size, cudaMemcpyHostToDevice);
+    p->params = params_cuda;
+  }
+
+  // move xc_func to GPU
   cudaMemcpy(pcuda, p, sizeof(XC(func_type)), cudaMemcpyHostToDevice);
   cudaMemcpy(outcuda, out, sizeof(xc_lda_out_params), cudaMemcpyHostToDevice);
 
@@ -134,8 +148,15 @@ WORK_LDA(ORDER_TXT, SPIN_TXT)
   WORK_LDA_GPU(ORDER_TXT, SPIN_TXT)<<<nblocks, CUDA_BLOCK_SIZE>>>
     (pcuda, np, rho, outcuda);
 
-  libxc_free(pcuda);
-  libxc_free(outcuda);
+  cudaFree(pcuda);
+  cudaFree(outcuda);
+
+  if (p->params_size > 0){
+    cudaFree(params_cuda);
+
+    // change it back to CPU
+    p->params = params;
+  }
 }
 
 #endif

@@ -28,7 +28,8 @@ static void
 gga_k_mpbe_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_k_mpbe_params));
+  p->params = malloc(sizeof(gga_k_mpbe_params)); 
+  p->params_size = sizeof(gga_k_mpbe_params);
 }
 
 #include "maple2c/gga_exc/gga_k_mpbe.c"
