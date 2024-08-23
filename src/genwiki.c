@@ -141,7 +141,7 @@ char * sanitize_link(const char * doi) {
   buf[j++]='\0';
 
   /* Allocate return array */
-  r = (char *) libxc_malloc(strlen(buf) + 1);
+  r = (char *) malloc(strlen(buf) + 1);
   strcpy(r,buf);
 
   return r;
