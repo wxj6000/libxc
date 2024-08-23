@@ -223,10 +223,16 @@ WORK_MGGA(ORDER_TXT, SPIN_TXT)
   XC(func_type) *pcuda;
   XC(func_type) *pcopy;
   xc_mgga_out_params *outcuda;
+  xc_func_info_type *info;
+
   pcopy = (XC(func_type) *) malloc(sizeof(XC(func_type)));
   memcpy(pcopy, p, sizeof(XC(func_type)));
   cudaMalloc((void**)&pcuda, sizeof(XC(func_type)));
   cudaMalloc((void**)&outcuda, sizeof(xc_mgga_out_params));
+  cudaMalloc((void**)&info, sizeof(xc_func_info_type));
+
+  cudaMemcpy(info, p->info, sizeof(xc_func_info_type), cudaMemcpyHostToDevice);
+  pcopy->info = info;
 
   // move params to GPU first
   void *params;
@@ -252,6 +258,7 @@ WORK_MGGA(ORDER_TXT, SPIN_TXT)
 
   cudaFree(pcuda);
   cudaFree(outcuda);
+  cudaFree(info);
 
   if (p->params_size > 0){
     cudaFree(params_cuda);
