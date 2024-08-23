@@ -342,14 +342,14 @@ void libxc_free(void *ptr);
 template <class int_type>
 void * libxc_malloc(const int_type size){
   void * mem;
-  cudaMalloc(&mem, size);
+  cudaMalloc((void **)&mem, size);
   return mem;
 }
 
 template <class int_type1, class int_type2>
 void * libxc_calloc(const int_type1 size1, const int_type2 size2){
   void * mem;
-  cudaMalloc(&mem, size1*size2);
+  cudaMalloc((void **)&mem, size1*size2);
   cudaMemset(mem, 0, size1*size2);
   return mem;
 }
