@@ -147,7 +147,7 @@ WORK_LDA(ORDER_TXT, SPIN_TXT)
   }
 
   // move xc_func to GPU
-  cudaMemcpy(pcuda, p, sizeof(XC(func_type)), cudaMemcpyHostToDevice);
+  cudaMemcpy(pcuda, pcopy, sizeof(XC(func_type)), cudaMemcpyHostToDevice);
   cudaMemcpy(outcuda, out, sizeof(xc_lda_out_params), cudaMemcpyHostToDevice);
 
   size_t nblocks = np/CUDA_BLOCK_SIZE;
