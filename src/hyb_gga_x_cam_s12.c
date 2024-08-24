@@ -19,7 +19,8 @@ static void
 hyb_gga_x_cam_s12_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(hyb_gga_x_cam_s12_params));
+  p->params = malloc(sizeof(hyb_gga_x_cam_s12_params)); 
+  p->params_size = sizeof(hyb_gga_x_cam_s12_params);
   xc_hyb_init_cam(p, 0.0, 0.0, 0.0);
 }
 

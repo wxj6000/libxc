@@ -104,7 +104,8 @@ static void
 hyb_gga_xc_case21_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(hyb_gga_xc_case21_params));
+  p->params = malloc(sizeof(hyb_gga_xc_case21_params)); 
+  p->params_size = sizeof(hyb_gga_xc_case21_params);
 
   xc_hyb_init_hybrid(p, 0.0);
 }

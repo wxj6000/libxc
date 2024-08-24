@@ -186,7 +186,7 @@ typedef void integr_fn(double *x, int n, void *ex);
 GPU_FUNCTION double xc_integrate(integr_fn func, void *ex, double a, double b);
 
 GPU_FUNCTION
-void xc_rdqagse(integr_fn f, void *ex, double *a, double *b, 
+void xc_rdqagse(integr_fn f, void *ex, double *a, double *b,
 	     double *epsabs, double *epsrel, int *limit, double *result,
 	     double *abserr, int *neval, int *ier, double *alist__,
 	     double *blist, double *rlist, double *elist, int *iord, int *last);
@@ -342,14 +342,14 @@ void libxc_free(void *ptr);
 template <class int_type>
 void * libxc_malloc(const int_type size){
   void * mem;
-  cudaMallocManaged(&mem, size);
+  cudaMalloc((void **)&mem, size);
   return mem;
 }
 
 template <class int_type1, class int_type2>
 void * libxc_calloc(const int_type1 size1, const int_type2 size2){
   void * mem;
-  cudaMallocManaged(&mem, size1*size2);
+  cudaMalloc((void **)&mem, size1*size2);
   cudaMemset(mem, 0, size1*size2);
   return mem;
 }
@@ -362,5 +362,6 @@ void libxc_memcpy(void *dest, void const *src, const int_type size){
 }
 
 #endif
+
 
 #endif

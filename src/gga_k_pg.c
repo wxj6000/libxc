@@ -18,7 +18,8 @@ static void
 gga_k_pg_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_k_pg_params));
+  p->params = malloc(sizeof(gga_k_pg_params)); 
+  p->params_size = sizeof(gga_k_pg_params);
 }
 
 #define N_PAR 1

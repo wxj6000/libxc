@@ -22,7 +22,8 @@ gga_x_mpbe_init(xc_func_type *p)
   gga_x_mpbe_params *params;
 
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_x_mpbe_params));
+  p->params = malloc(sizeof(gga_x_mpbe_params)); 
+  p->params_size = sizeof(gga_x_mpbe_params);
   params = (gga_x_mpbe_params *) (p->params);
 
   switch(p->info->number){

@@ -66,7 +66,7 @@ char *xc_functional_get_name(int number)
     if(xc_functional_keys[ii].number == number) {
       /* return duplicated: caller has the responsibility to dealloc string.
          Do this the old way since strdup and strndup aren't C standard. */
-      p = (char *) libxc_malloc(strlen(xc_functional_keys[ii].name) + 1);
+      p = (char *) malloc(strlen(xc_functional_keys[ii].name) + 1);
       strcpy(p,xc_functional_keys[ii].name);
       return p;
     }
@@ -229,7 +229,7 @@ void xc_available_functional_names(char **list)
 
   /* Arrange list of functional IDs by name */
   N=xc_number_of_functionals();
-  idlist=(int *) libxc_malloc(N*sizeof(int));
+  idlist=(int *) malloc(N*sizeof(int));
   for(ii=0;ii<N;ii++) {
     idlist[ii]=ii;
   }
@@ -241,7 +241,7 @@ void xc_available_functional_names(char **list)
   }
 
   /* Deallocate work array */
-  libxc_free(idlist);
+  free(idlist);
 }
 
 /*------------------------------------------------------*/
@@ -249,7 +249,7 @@ xc_func_type *xc_func_alloc(void)
 {
   xc_func_type *func;
 
-  func = (xc_func_type *) libxc_malloc (sizeof (xc_func_type));
+  func = (xc_func_type *) malloc (sizeof (xc_func_type));
   return func;
 }
 
@@ -273,6 +273,7 @@ void xc_func_nullify(xc_func_type *func)
 
   func->ext_params = NULL;
   func->params     = NULL;
+  func->params_size = 0;
 
   func->dens_threshold  = 0.0;
   func->zeta_threshold  = 0.0;
@@ -293,13 +294,11 @@ int xc_func_init(xc_func_type *func, int functional, int nspin)
   /* initialize structure */
   func->nspin       = nspin;
 
-  // we have to make a copy because the *_known_funct arrays live in
-  // host memory (libxc_malloc instead returns memory than can be read
-  // from GPU and CPU).
-  xc_func_info_type * finfo = (xc_func_info_type *) libxc_malloc(sizeof(xc_func_info_type));
+  // TODO: remove the copy
+  xc_func_info_type * finfo = (xc_func_info_type *) malloc(sizeof(xc_func_info_type));
 
   // initialize the dimension structure
-  libxc_memset(&(func->dim), 0, sizeof(xc_dimensions));
+  memset(&(func->dim), 0, sizeof(xc_dimensions));
   switch(xc_family_from_id(functional, NULL, &number)){
   case(XC_FAMILY_LDA):
     *finfo = *xc_lda_known_funct[number];
@@ -354,7 +353,7 @@ int xc_func_init(xc_func_type *func, int functional, int nspin)
 
   /* see if we need to initialize the external parameters */
   if(func->info->ext_params.n > 0) {
-    func->ext_params = (double *) libxc_malloc(func->info->ext_params.n * sizeof(double));
+    func->ext_params = (double *) malloc(func->info->ext_params.n * sizeof(double));
     xc_func_set_ext_params(func, func->info->ext_params.values);
 
     /* sanity check external parameter names and descriptions */
@@ -395,22 +394,22 @@ void xc_func_end(xc_func_type *func)
 
     for(ii=0; ii<func->n_func_aux; ii++){
       xc_func_end(func->func_aux[ii]);
-      libxc_free(func->func_aux[ii]);
+      free(func->func_aux[ii]);
     }
-    libxc_free(func->func_aux);
+    free(func->func_aux);
   }
 
   /* deallocate coefficients for mixed functionals */
   if(func->mix_coef != NULL)
-    libxc_free(func->mix_coef);
+    free(func->mix_coef);
 
   /* deallocate any used parameter */
   if(func->ext_params != NULL)
-    libxc_free(func->ext_params);
+    free(func->ext_params);
   if(func->params != NULL)
-    libxc_free(func->params);
+    free(func->params);
 
-  libxc_free((void *) func->info);
+  free((void *) func->info);
 
   xc_func_nullify(func);
 }
@@ -418,7 +417,7 @@ void xc_func_end(xc_func_type *func)
 /*------------------------------------------------------*/
 void  xc_func_free(xc_func_type *p)
 {
-  libxc_free(p);
+  free(p);
 }
 
 /*------------------------------------------------------*/

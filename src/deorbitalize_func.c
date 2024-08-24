@@ -257,7 +257,7 @@ xc_mgga_evaluate_functional(const xc_func_type *func, size_t np,
 
   if(func->info->flags & XC_FLAGS_HAVE_EXC)
     mzk = zk;
-  
+
   /* Evaluate the functional */
   switch(func->info->family){
   case XC_FAMILY_LDA:
@@ -286,10 +286,10 @@ xc_deorbitalize_init(xc_func_type *p, int mgga_id, int ked_id)
 
   /* allocate structures needed for */
   p->n_func_aux = 2;
-  p->func_aux   = (xc_func_type **) libxc_malloc(2*sizeof(xc_func_type *));
+  p->func_aux   = (xc_func_type **) malloc(2*sizeof(xc_func_type *));
 
-  p->func_aux[0] = (xc_func_type *) libxc_malloc(sizeof(xc_func_type));
-  p->func_aux[1] = (xc_func_type *) libxc_malloc(sizeof(xc_func_type));
+  p->func_aux[0] = (xc_func_type *) malloc(sizeof(xc_func_type));
+  p->func_aux[1] = (xc_func_type *) malloc(sizeof(xc_func_type));
 
   xc_func_init (p->func_aux[0], mgga_id, p->nspin);
   xc_func_init (p->func_aux[1], ked_id,  p->nspin);
@@ -470,4 +470,4 @@ xc_mgga_funcs_variants xc_deorbitalize_func =
    {deorb_new, deorb_new, deorb_new, deorb_new, deorb_new},
    {deorb_new, deorb_new, deorb_new, deorb_new, deorb_new}
   };
-                                               
+

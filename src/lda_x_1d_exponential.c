@@ -19,7 +19,8 @@ static void
 lda_x_1d_exponential_init(xc_func_type *p)
 {
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(lda_x_1d_exponential_params));
+  p->params = malloc(sizeof(lda_x_1d_exponential_params)); 
+  p->params_size = sizeof(lda_x_1d_exponential_params);
 }
 
 GPU_FUNCTION

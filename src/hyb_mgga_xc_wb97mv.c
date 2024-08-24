@@ -52,7 +52,8 @@ static void
 hyb_mgga_xc_wb97mv_init(xc_func_type *p)
 {
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(hyb_mgga_xc_wb97_mv_params));
+  p->params = malloc(sizeof(hyb_mgga_xc_wb97_mv_params)); 
+  p->params_size = sizeof(hyb_mgga_xc_wb97_mv_params);
   xc_hyb_init_cam(p, 0.0, 0.0, 0.0);
 
   p->nlc_b = 6.0;

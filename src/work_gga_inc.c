@@ -51,7 +51,7 @@ WORK_GGA(ORDER_TXT, SPIN_TXT)
     dens = (p->nspin == XC_POLARIZED) ? VAR(rho, ip, 0) + VAR(rho, ip, 1) : VAR(rho, ip, 0);
     if(dens < p->dens_threshold)
       continue;
-    
+
     /* sanity check of input parameters */
     my_rho[0] = m_max(p->dens_threshold, VAR(rho, ip, 0));
     my_sigma[0] = m_max(p->sigma_threshold * p->sigma_threshold, VAR(sigma, ip, 0));
@@ -70,7 +70,7 @@ WORK_GGA(ORDER_TXT, SPIN_TXT)
     }
 
     FUNC(ORDER_TXT, SPIN_TXT)(p, ip, my_rho, my_sigma, out);
-    
+
     /* check for NaNs */
 #ifdef XC_DEBUG
     {
@@ -150,10 +150,32 @@ WORK_GGA(ORDER_TXT, SPIN_TXT)
          xc_gga_out_params *out)
 {
   //make a copy of 'p' and 'out' since they might be in host-only memory
-  XC(func_type) *pcuda = (XC(func_type) *) libxc_malloc(sizeof(XC(func_type)));
-  xc_gga_out_params *outcuda = (xc_gga_out_params *) libxc_malloc(sizeof(xc_gga_out_params));
+  XC(func_type) *pcuda;
+  XC(func_type) *pcopy;
+  xc_gga_out_params *outcuda;
+  xc_func_info_type *info;
 
-  cudaMemcpy(pcuda, p, sizeof(XC(func_type)), cudaMemcpyHostToDevice);
+  pcopy = (XC(func_type) *) malloc(sizeof(XC(func_type)));
+  memcpy(pcopy, p, sizeof(XC(func_type)));
+  cudaMalloc((void**)&pcuda, sizeof(XC(func_type)));
+  cudaMalloc((void**)&outcuda, sizeof(xc_gga_out_params));
+  cudaMalloc((void**)&info, sizeof(xc_func_info_type));
+
+  cudaMemcpy(info, p->info, sizeof(xc_func_info_type), cudaMemcpyHostToDevice);
+  pcopy->info = info;
+
+  // move params to GPU first
+  void *params;
+  void *params_cuda;
+  if (p->params_size > 0){
+    params = (void *) pcopy->params;
+    cudaMalloc((void**)&params_cuda, p->params_size);
+    cudaMemcpy(params_cuda, params, p->params_size, cudaMemcpyHostToDevice);
+    pcopy->params = params_cuda;
+  }
+
+  // move xc_func to GPU
+  cudaMemcpy(pcuda, pcopy, sizeof(XC(func_type)), cudaMemcpyHostToDevice);
   cudaMemcpy(outcuda, out, sizeof(xc_gga_out_params), cudaMemcpyHostToDevice);
 
   size_t nblocks = np/CUDA_BLOCK_SIZE;
@@ -162,8 +184,21 @@ WORK_GGA(ORDER_TXT, SPIN_TXT)
   WORK_GGA_GPU(ORDER_TXT, SPIN_TXT)<<<nblocks, CUDA_BLOCK_SIZE>>>
     (pcuda, np, rho, sigma, outcuda);
 
-  libxc_free(pcuda);
-  libxc_free(outcuda);
+  free(pcopy);
+
+  cudaFree(pcuda);
+  cudaFree(outcuda);
+  cudaFree(info);
+
+  if (p->params_size > 0){
+    cudaFree(params_cuda);
+  }
+
+  cudaError_t err = cudaGetLastError();
+  if (err != cudaSuccess) {
+    fprintf(stderr, "CUDA Error of work_gga: %s\n", cudaGetErrorString(err));
+    exit(EXIT_FAILURE);
+  }
 }
 
 #endif

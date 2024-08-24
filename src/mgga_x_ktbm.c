@@ -74,7 +74,8 @@ static void
 mgga_x_ktbm_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(mgga_x_ktbm_params));
+  p->params = malloc(sizeof(mgga_x_ktbm_params)); 
+  p->params_size = sizeof(mgga_x_ktbm_params);
 }
 
 #include "maple2c/mgga_exc/mgga_x_ktbm.c"
