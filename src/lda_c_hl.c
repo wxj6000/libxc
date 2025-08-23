@@ -30,7 +30,8 @@ static const double par_vbh[N_PAR] = {30.0, 75.0, 0.0252, 0.0127};
 
 static void lda_c_hl_init(xc_func_type *p) {
   assert(p != NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(lda_c_hl_params));
+  p->params = malloc(sizeof(lda_c_hl_params)); 
+  p->params_size = sizeof(lda_c_hl_params);
 }
 
 #include "maple2c/lda_exc/lda_c_hl.c"

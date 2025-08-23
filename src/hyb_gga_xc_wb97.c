@@ -84,7 +84,8 @@ static void
 gga_xc_wb97_init(xc_func_type *p)
 {
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_xc_wb97_params));
+  p->params = malloc(sizeof(gga_xc_wb97_params)); 
+  p->params_size = sizeof(gga_xc_wb97_params);
   xc_hyb_init_cam(p, 0.0, 0.0, 0.0);
   
   switch(p->info->number){

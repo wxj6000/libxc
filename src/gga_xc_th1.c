@@ -66,7 +66,8 @@ static void
 gga_xc_th1_init(xc_func_type *p)
 {
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_xc_th1_params));
+  p->params = malloc(sizeof(gga_xc_th1_params)); 
+  p->params_size = sizeof(gga_xc_th1_params);
 }
 
 #include "maple2c/gga_exc/gga_xc_th1.c"

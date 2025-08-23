@@ -30,7 +30,8 @@ static void
 mgga_c_rppscan_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(mgga_c_rppscan_params));
+  p->params = malloc(sizeof(mgga_c_rppscan_params)); 
+  p->params_size = sizeof(mgga_c_rppscan_params);
 }
 
 #ifdef __cplusplus

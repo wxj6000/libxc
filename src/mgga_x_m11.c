@@ -41,7 +41,8 @@ static void
 mgga_x_m11_init(xc_func_type *p)
 {
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(mgga_x_m11_params));
+  p->params = malloc(sizeof(mgga_x_m11_params)); 
+  p->params_size = sizeof(mgga_x_m11_params);
 
   xc_hyb_init_cam(p, 0.0, 0.0, 0.0);
 }

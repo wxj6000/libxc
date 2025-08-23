@@ -26,7 +26,8 @@ static void
 lda_c_epc17_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(lda_c_epc17_params));
+  p->params = malloc(sizeof(lda_c_epc17_params)); 
+  p->params_size = sizeof(lda_c_epc17_params);
 }
 
 #include "maple2c/lda_exc/lda_c_epc17.c"

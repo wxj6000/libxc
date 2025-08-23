@@ -54,7 +54,8 @@ static void
 gga_x_sogga11_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_x_sogga11_params));
+  p->params = malloc(sizeof(gga_x_sogga11_params)); 
+  p->params_size = sizeof(gga_x_sogga11_params);
 
   if(p->info->number == XC_HYB_GGA_X_SOGGA11_X)
     xc_hyb_init_hybrid(p, 0.0);

@@ -30,13 +30,14 @@ mgga_c_m06l_init(xc_func_type *p)
   assert(p != NULL);
 
   p->n_func_aux  = 1;
-  p->func_aux    = (xc_func_type **) libxc_malloc(1*sizeof(xc_func_type *));
-  p->func_aux[0] = (xc_func_type *)  libxc_malloc(  sizeof(xc_func_type));
+  p->func_aux    = (xc_func_type **) malloc(1*sizeof(xc_func_type *));
+  p->func_aux[0] = (xc_func_type *)  malloc(  sizeof(xc_func_type));
 
   xc_func_init(p->func_aux[0], XC_LDA_C_PW_MOD, XC_POLARIZED);
 
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(mgga_c_m06l_params));
+  p->params = malloc(sizeof(mgga_c_m06l_params));
+  p->params_size = sizeof(mgga_c_m06l_params);
 }
 
 #define M06L_N_PAR 27

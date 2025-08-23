@@ -133,4 +133,3 @@ GPU_FUNCTION double xc_expint_e1_impl(double x, const int scale){
 
   return e1;
 }
-

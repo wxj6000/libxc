@@ -64,7 +64,8 @@ static const double par_hyb_tau_hcth[BMK_N_PAR] = {
 
 static void gga_c_bmk_init(xc_func_type *p) {
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_c_bmk_params));
+  p->params = malloc(sizeof(gga_c_bmk_params)); 
+  p->params_size = sizeof(gga_c_bmk_params);
 }
 
 #include "maple2c/gga_exc/gga_c_bmk.c"

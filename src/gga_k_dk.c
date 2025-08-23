@@ -39,7 +39,8 @@ static void
 gga_k_dk_init(xc_func_type *p)
 {
   assert(p != NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_k_dk_params));
+  p->params = malloc(sizeof(gga_k_dk_params)); 
+  p->params_size = sizeof(gga_k_dk_params);
 }
 
 #define KINS (X2S*X2S) /* conversion to s^2 */

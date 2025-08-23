@@ -42,7 +42,8 @@ static void
 mgga_x_m08_init(xc_func_type *p)
 {
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(mgga_x_m08_params));
+  p->params = malloc(sizeof(mgga_x_m08_params)); 
+  p->params_size = sizeof(mgga_x_m08_params);
 
   xc_hyb_init_hybrid(p, 0.0);
 }

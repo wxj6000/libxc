@@ -64,7 +64,8 @@ gga_x_n12_init(xc_func_type *p)
 {
   assert(p != NULL);
   assert(p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_x_n12_params));
+  p->params = malloc(sizeof(gga_x_n12_params)); 
+  p->params_size = sizeof(gga_x_n12_params);
 
   if(p->info->number == XC_HYB_GGA_X_N12_SX)
     xc_hyb_init_sr(p, 0.0, 0.0);

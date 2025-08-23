@@ -22,12 +22,12 @@ xc_mix_init(xc_func_type *p, int n_funcs, const int *funcs_id, const double *mix
 
   /* allocate structures needed for mixed functional */
   p->n_func_aux = n_funcs;
-  p->mix_coef   = (double *) libxc_malloc(n_funcs*sizeof(double));
-  p->func_aux   = (xc_func_type **) libxc_malloc(n_funcs*sizeof(xc_func_type *));
+  p->mix_coef   = (double *) malloc(n_funcs*sizeof(double));
+  p->func_aux   = (xc_func_type **) malloc(n_funcs*sizeof(xc_func_type *));
 
   for(ii=0; ii<n_funcs; ii++){
     p->mix_coef[ii] = mix_coef[ii];
-    p->func_aux[ii] = (xc_func_type *) libxc_malloc(sizeof(xc_func_type));
+    p->func_aux[ii] = (xc_func_type *) malloc(sizeof(xc_func_type));
     xc_func_init (p->func_aux[ii], funcs_id[ii], p->nspin);
   }
 
@@ -60,7 +60,7 @@ static void add_to_mix(size_t np, double * dst, double coeff, const double *src)
 #define is_mgga(id)   ((id) == XC_FAMILY_MGGA || (id) == XC_FAMILY_HYB_MGGA)
 #define is_gga(id)    ((id) == XC_FAMILY_GGA  || (id) == XC_FAMILY_HYB_GGA || is_mgga(id))
 #define is_lda(id)    ((id) == XC_FAMILY_LDA  || (id) == XC_FAMILY_HYB_LDA ||  is_gga(id))
-#define safe_free(pt) if(pt != NULL) libxc_free(pt)
+#define safe_free(pt) if(pt != NULL) free(pt)
 #define sum_var(VAR) add_to_mix(np*dim->VAR, VAR, func->mix_coef[ii], x ## VAR);
 
 void

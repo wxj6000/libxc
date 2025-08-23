@@ -921,7 +921,7 @@ GPU_FUNCTION void
 xc_bspline(int i, int p, double u, int nderiv, const double *U, double *ders) {
 
   /* Initialize output array */
-  libxc_memset(ders, 0, (nderiv+1)*sizeof(double));
+  memset(ders, 0, (nderiv+1)*sizeof(double));
 
   /* Check locality of support */
   if(u < U[i] || u >= U[i+p+1]) {
@@ -934,7 +934,7 @@ xc_bspline(int i, int p, double u, int nderiv, const double *U, double *ders) {
 
   /* Array of normalized B splines, use dense storage for simpler code */
   double N[PMAX][PMAX];
-  libxc_memset(N, 0, PMAX*PMAX*sizeof(double));
+  memset(N, 0, PMAX*PMAX*sizeof(double));
 
   /* Initialize zeroth-degree functions: piecewise constants */
   for(int j=0; j<=p; j++) {
@@ -972,7 +972,7 @@ xc_bspline(int i, int p, double u, int nderiv, const double *U, double *ders) {
   /* Compute derivatives */
   for(int k=1; k<=maxk; k++) {
     /* Load appropriate column */
-    libxc_memset(ND, 0, (nderiv+1)*sizeof(double));
+    memset(ND, 0, (nderiv+1)*sizeof(double));
     for(int j=0; j<=k; j++)
       ND[j] = N[p-k][j];
 

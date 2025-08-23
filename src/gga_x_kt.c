@@ -22,7 +22,8 @@ static void
 gga_x_kt_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_x_kt_params));
+  p->params = malloc(sizeof(gga_x_kt_params)); 
+  p->params_size = sizeof(gga_x_kt_params);
 }
 
 #include "maple2c/gga_exc/gga_x_kt.c"

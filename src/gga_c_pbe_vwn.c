@@ -17,7 +17,8 @@ typedef struct{
 static void gga_c_pbe_vwn_init(xc_func_type *p)
 {
   assert(p!=NULL && p->params == NULL);
-  p->params = libxc_malloc(sizeof(gga_c_pbe_vwn_params));
+  p->params = malloc(sizeof(gga_c_pbe_vwn_params)); 
+  p->params_size = sizeof(gga_c_pbe_vwn_params);
 }
 
 #define PBEVWN_N_PAR 3
